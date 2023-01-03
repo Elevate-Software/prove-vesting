@@ -77,7 +77,7 @@ contract Vesting is Ownable {
 
     /// @notice Used to claim vested tokens.
     /// @dev msg.sender must be the investor address
-    function claim() public onlyInvestor() {}
+    function claim() external onlyInvestor() {}
 
 
     // ---------------
@@ -87,16 +87,16 @@ contract Vesting is Ownable {
     /// @notice This function adds an address to the investorLibrary.
     /// @param account the wallet address of investor being added.
     /// @param tokensToVest the amount of $PROVE that is being vested for that investor.
-    function addInvestor(address account, uint256 tokensToVest) public onlyOwner() {}
+    function addInvestor(address account, uint256 tokensToVest) external onlyOwner() {}
 
     /// @notice This function removes an investor from the investorLibrary.
     /// @param account the wallet address of investor that is being removed.
-    function removeInvestor(address account) public onlyOwner() {}
+    function removeInvestor(address account) external onlyOwner() {}
 
     /// @notice This function starts the vesting period.
     /// @dev will set start time to vestingStartUnix.
     ///      will set vestingEnabled to true.
-    function enableVesting() public onlyOwner() {}
+    function enableVesting() external onlyOwner() {}
 
     /// @notice Is used to remove ERC20 tokens from the contract.
     /// @dev token address cannot be $PROVE
