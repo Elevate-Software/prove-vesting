@@ -1,0 +1,58 @@
+{
+  "abi": [],
+  "bytecode": {
+    "object": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220edad22c55e53046147195033c1ec8f56d552234fb3ea691f5cf06d6a9d0ba97d64736f6c634300080f0033",
+    "sourceMap": "65:19:16:-:0;;;;;;;;;;;;;;;;;;;",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x6080604052600080fdfea2646970667358221220edad22c55e53046147195033c1ec8f56d552234fb3ea691f5cf06d6a9d0ba97d64736f6c634300080f0033",
+    "sourceMap": "65:19:16:-:0;;;;;",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {},
+  "ast": {
+    "absolutePath": "src/Vesting.sol",
+    "id": 25535,
+    "exportedSymbols": {
+      "Vesting": [
+        25534
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "39:46:16",
+    "nodes": [
+      {
+        "id": 25533,
+        "nodeType": "PragmaDirective",
+        "src": "39:24:16",
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".13"
+        ]
+      },
+      {
+        "id": 25534,
+        "nodeType": "ContractDefinition",
+        "src": "65:19:16",
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "Vesting",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          25534
+        ],
+        "name": "Vesting",
+        "nameLocation": "74:7:16",
+        "scope": 25535,
+        "usedErrors": []
+      }
+    ],
+    "license": "UNLICENSED"
+  },
+  "id": 16
+}
