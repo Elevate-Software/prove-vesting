@@ -70,6 +70,9 @@ contract Vesting is Ownable {
     /// @param receiver address of msg.sender.
     event Erc20TokensWithdrawn(address token, uint256 amount, address receiver);
 
+    /// @notice This event is emitted when enableVesting() is executed. Should only be executed once.
+    event VestingEnabled();
+
 
     // ---------
     // Functions
@@ -96,7 +99,14 @@ contract Vesting is Ownable {
     /// @notice This function starts the vesting period.
     /// @dev will set start time to vestingStartUnix.
     ///      will set vestingEnabled to true.
-    function enableVesting() external onlyOwner() {}
+    function enableVesting() external onlyOwner() {
+        require(!vestingEnabled, "Vesting.sol::enableVesting() vesting is already enabled");
+
+        vestingEnabled = true;
+        vestingStartUnix = block.timestamp;
+
+        emit VestingEnabled();
+    }
 
     /// @notice Is used to remove ERC20 tokens from the contract.
     /// @dev token address cannot be $PROVE
