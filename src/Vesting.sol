@@ -35,8 +35,9 @@ contract Vesting is Ownable {
     // Constructor
     // -----------
 
-    constructor(address _proveToken) {
+    constructor(address _proveToken, address _admin) {
         proveToken = _proveToken;
+        transferOwnership(_admin);
     }
 
 

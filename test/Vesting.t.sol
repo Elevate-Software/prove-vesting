@@ -14,7 +14,8 @@ contract VestingTest is Utility, Test {
 
         // deploy Vesting contract
         vesting = new Vesting(
-            address(222)
+            address(222),
+            address(dev)
         );
     }
 
@@ -29,11 +30,27 @@ contract VestingTest is Utility, Test {
 
     // Verifies enableVesting restrictions.
     function test_vesting_enableVesting_restrictions() public {
-        //asdf
+        // Jon should NOT be able to call enableVesting()
+        assert(!jon.try_enableVesting(address(vesting)));
+
+        // Joe should NOT be able to call enableVesting()
+        assert(!joe.try_enableVesting(address(vesting)));
+
+        // Dev should result in a successful execution of enableVesting()
+        assert(dev.try_enableVesting(address(vesting)));
     }
 
     // Verifies enableVesting state changes.
     function test_vesting_enableVesting_state_changes() public {
-        //asdf
+        // Pre-State check.
+        assertEq(vesting.vestingStartUnix(), 0);
+        assertEq(vesting.vestingEnabled(),   false);
+
+        // Call enableVesting().
+        assert(dev.try_enableVesting(address(vesting)));
+
+        // Post-State check.
+        assertEq(vesting.vestingStartUnix(), block.timestamp);
+        assertEq(vesting.vestingEnabled(),   true);
     }
 }

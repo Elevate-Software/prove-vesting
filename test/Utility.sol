@@ -88,9 +88,9 @@ contract Utility is DSTest {
     /*** Actor/Multisig Setup Functions ***/
     /**************************************/
     function createActors() public {
-        jon = new Actor();
-        joe = new Actor();
-        dev = new Actor();
+        jon = new Actor(); // black hat
+        joe = new Actor(); // investor -> will have vested tokens
+        dev = new Actor(); // owner
     }
 
 
