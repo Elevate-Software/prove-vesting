@@ -38,6 +38,9 @@ contract VestingTest is Utility, Test {
 
         // Dev should result in a successful execution of enableVesting()
         assert(dev.try_enableVesting(address(vesting)));
+
+        // Dev should NOT be able to call enableVesting() after enableVesting has been enabled
+        assert(!dev.try_enableVesting(address(vesting)));
     }
 
     /// @dev Verifies enableVesting state changes.
@@ -56,7 +59,7 @@ contract VestingTest is Utility, Test {
 
     // ~ withdrawErc20() tests ~
 
-    /// @dev Verifies withdrawErc20 restrictions
+    /// @dev Verifies withdrawErc20 restrictions.
     function test_vesting_withdrawErc20_restrictions() public {
         // Jon should NOT be able to call withdrawErc20()
         assert(!jon.try_withdrawErc20(address(vesting), USDC));
@@ -80,8 +83,20 @@ contract VestingTest is Utility, Test {
         assert(dev.try_withdrawErc20(address(vesting), USDC));
     }
 
+    /// @dev Verifies withdrawErc20 state changes.
     function test_vesting_withdrawErc20_state_changes() public {
+        deal(USDC, address(vesting), 100 * USD);
 
+        // Pre-State check
+        assertEq(IERC20(USDC).balanceOf(address(vesting)), 100 * USD);
+        assertEq(IERC20(USDC).balanceOf(address(dev)),     0);
+
+        // Dev is going to call withdrawErc20
+        assert(dev.try_withdrawErc20(address(vesting), USDC));
+
+        // Post-State check
+        assertEq(IERC20(USDC).balanceOf(address(vesting)), 0);
+        assertEq(IERC20(USDC).balanceOf(address(dev)),     100 * USD);
     }
 
 
