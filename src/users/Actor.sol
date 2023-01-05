@@ -16,10 +16,14 @@ contract Actor {
     //////////////////////////////////////////////////////////////////////////
 
 
-    function try_transferToken(address token, address to, uint256 amt) external returns (bool ok) {
-        string memory sig = "transfer(address,uint256)";
-        (ok,) = address(token).call(abi.encodeWithSignature(sig, to, amt));
+    function try_enableVesting(address _contract) external returns (bool ok) {
+        string memory sig = "enableVesting()";
+        (ok,) = address(_contract).call(abi.encodeWithSignature(sig));
     }
 
-    
+    function try_withdrawErc20(address _contract, address token) external returns (bool ok) {
+        string memory sig = "withdrawErc20(address)";
+        (ok,) = address(_contract).call(abi.encodeWithSignature(sig, token));
+    }
+
 }
