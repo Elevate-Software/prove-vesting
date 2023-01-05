@@ -28,7 +28,7 @@ contract VestingTest is Utility, Test {
 
     // ~ enableVesting() tests ~
 
-    // Verifies enableVesting restrictions.
+    /// @dev Verifies enableVesting restrictions.
     function test_vesting_enableVesting_restrictions() public {
         // Jon should NOT be able to call enableVesting()
         assert(!jon.try_enableVesting(address(vesting)));
@@ -40,7 +40,7 @@ contract VestingTest is Utility, Test {
         assert(dev.try_enableVesting(address(vesting)));
     }
 
-    // Verifies enableVesting state changes.
+    /// @dev Verifies enableVesting state changes.
     function test_vesting_enableVesting_state_changes() public {
         // Pre-State check.
         assertEq(vesting.vestingStartUnix(), 0);
@@ -53,4 +53,36 @@ contract VestingTest is Utility, Test {
         assertEq(vesting.vestingStartUnix(), block.timestamp);
         assertEq(vesting.vestingEnabled(),   true);
     }
+
+    // ~ withdrawErc20() tests ~
+
+    /// @dev Verifies withdrawErc20 restrictions
+    function test_vesting_withdrawErc20_restrictions() public {
+        // Jon should NOT be able to call withdrawErc20()
+        assert(!jon.try_withdrawErc20(address(vesting), USDC));
+
+        // Joe should NOT be able to call withdrawErc20()
+        assert(!joe.try_withdrawErc20(address(vesting), USDC));
+
+        // Dev should NOT be able to withdraw from a 0 balance
+        assert(!dev.try_withdrawErc20(address(vesting), USDC));
+
+        // Dev should NOT be able to withdraw $PROVE token
+        assert(!dev.try_withdrawErc20(address(vesting), vesting.proveToken()));
+
+        // Dev should NOT be able to withdraw address(0)
+        assert(!dev.try_withdrawErc20(address(vesting), address(0)));
+
+        // deal 100 USDC to the vesting contract
+        deal(USDC, address(vesting), 100 * USD);
+
+        // Dev should be able to withdraw 100 USDC from the vesting contract
+        assert(dev.try_withdrawErc20(address(vesting), USDC));
+    }
+
+    function test_vesting_withdrawErc20_state_changes() public {
+
+    }
+
+
 }

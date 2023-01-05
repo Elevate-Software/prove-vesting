@@ -112,7 +112,18 @@ contract Vesting is Ownable {
     /// @notice Is used to remove ERC20 tokens from the contract.
     /// @dev token address cannot be $PROVE
     /// @param token contract address of token we wish to remove.
-    function withdrawErc20(address token) external onlyOwner() {}
+    function withdrawErc20(address token) external onlyOwner() {
+        require(token != proveToken, "Vesting.sol::withdrawErc20() cannot withdraw $PROVE token");
+        require(token != address(0), "Vesting.sol::withdrawErc20() token cannot be address(0)");
+
+        uint256 balance = IERC20(token).balanceOf(address(this));
+        require(balance > 0, "Vesting.sol::withdrawErc20() insufficient token balance");
+
+        bool success = IERC20(token).transfer(owner(), balance);
+        require(success, "Vesting.sol::withdrawErc20() transfer unsuccessful");
+
+        emit Erc20TokensWithdrawn(token, balance, owner());
+    }
 
 
     // ----

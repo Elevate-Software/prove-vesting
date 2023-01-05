@@ -21,5 +21,9 @@ contract Actor {
         (ok,) = address(_contract).call(abi.encodeWithSignature(sig));
     }
 
-    
+    function try_withdrawErc20(address _contract, address token) external returns (bool ok) {
+        string memory sig = "withdrawErc20(address)";
+        (ok,) = address(_contract).call(abi.encodeWithSignature(sig, token));
+    }
+
 }
