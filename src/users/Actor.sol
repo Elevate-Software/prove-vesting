@@ -26,4 +26,9 @@ contract Actor {
         (ok,) = address(_contract).call(abi.encodeWithSignature(sig, token));
     }
 
+    function try_addInvestor(address _contract, address account, uint256 tokensToVest) external returns (bool ok) {
+        string memory sig = "addInvestor(address, uint256)";
+        (ok,) = address(_contract).call(abi.encodeWithSignature(sig, account, tokensToVest));
+    }
+
 }
