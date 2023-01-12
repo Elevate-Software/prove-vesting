@@ -154,11 +154,7 @@ contract Vesting is Ownable {
     /// @return uint256 amount of tokens claimed by account.
     function getAmountClaimed(address account) public view returns (uint256) {}
 
-    /// @notice This function returns a bool true if the investor exists, and false if they do not.
-    /// @param account address of investor.
-    /// @return bool true if investor exists, false otherwise.
-    function isInvestor(address account) public view returns (bool) {}
-
+    /// @notice This function returns the Investor array, investorLibrary.
     function getInvestorLibrary() public view returns (Investor[] memory) {
         return investorLibrary;
     }
