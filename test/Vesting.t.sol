@@ -104,33 +104,33 @@ contract VestingTest is Utility, Test {
     /// @dev Verifies addInvestor restrictions
     function test_vesting_addInvestor_restrictions() public {
         // Exploiter Jon should NOT be able to call addInvestor()
-        assert(!jon.try_addInvestor(address(vesting), jon, 10));
+        assert(!jon.try_addInvestor(address(vesting), address(jon), 10));
 
         // Investor Joe should NOT be able to call addInvestor()
-        assert(!joe.try_addInvestor(address(vesting), joe, 10));
+        assert(!joe.try_addInvestor(address(vesting), address(joe), 10));
 
         // Dev should be able to call addInvestor()
-        assert(dev.try_addInvestor(address(vesting), joe, 10));
+        assert(dev.try_addInvestor(address(vesting), address(joe), 10));
 
         // Dev should NOT be able to add the same investor twice
-        assert(!dev.try_addInvestor(address(vesting), joe, 10));
+        assert(!dev.try_addInvestor(address(vesting), address(joe), 10));
 
     }
 
     /// @dev Verifies addInvestor state changes
     function test_vesting_addInvestor_state_changes() public {
         // Pre-State check.
-        assertEq(vesting.investors(joe),      false);
-        assertEq(vesting.tokensToVest(joe),   0);
-        assertEq(vesting.tokensClaimed(joe),  0);
+        assertEq(vesting.investors(address(joe)),      false);
+        assertEq(vesting.tokensToVest(address(joe)),   0);
+        assertEq(vesting.tokensClaimed(address(joe)),  0);
 
         // Call enableVesting().
-        assert(dev.try_addInvestor(address(vesting), joe, 10));
+        assert(dev.try_addInvestor(address(vesting), address(joe), 10));
 
         // Post-State check.
-        assertEq(vesting.investors(joe),      true);
-        assertEq(vesting.tokensToVest(joe),   10);
-        assertEq(vesting.tokensClaimed(joe),  0);
+        assertEq(vesting.investors(address(joe)),      true);
+        assertEq(vesting.tokensToVest(address(joe)),   10);
+        assertEq(vesting.tokensClaimed(address(joe)),  0);
         
     }
 }

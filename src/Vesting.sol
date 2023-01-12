@@ -28,7 +28,7 @@ contract Vesting is Ownable {
     /// @param tokensToVest   The total amount of $PROVE token allocated to that investor.
     /// @param tokensClaimed  The amount of tokens the investor has claimed already.
     struct Investor {
-        address addy; //noticed this was missing
+        address addy;
         uint256 tokensToVest;
         uint256 tokensClaimed;
     }
@@ -36,7 +36,6 @@ contract Vesting is Ownable {
     mapping(address => bool) public investors;        /// @notice Mapping to track investor addresses.
     mapping(address => uint256) public tokensToVest;  /// @notice The total amount of $PROVE token allocated to that investor address.
     mapping(address => uint256) public tokensClaimed; /// @notice The amount of tokens the investor has claimed already.
-
 
     // -----------
     // Constructor
