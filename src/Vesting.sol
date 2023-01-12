@@ -21,21 +21,20 @@ contract Vesting is Ownable {
     uint256 public vestingStartUnix;  /// @notice block timestamp of when vesting has begun
     bool public vestingEnabled;       /// @notice vesting enabled when true.
 
-    //remove this? looping array objects is bad time complexity. Using mappings is better
     Investor[] investorLibrary;   /// @notice array of investors.
 
-    //remove this struct
+    /// @param account        The wallet address of investor.
     /// @param tokensToVest   The total amount of $PROVE token allocated to that investor.
     /// @param tokensClaimed  The amount of tokens the investor has claimed already.
     struct Investor {
-        address addy;
+        address account;
         uint256 tokensToVest;
         uint256 tokensClaimed;
     }
 
     mapping(address => bool) public investors;        /// @notice Mapping to track investor addresses.
-    mapping(address => uint256) public tokensToVest;  /// @notice The total amount of $PROVE token allocated to that investor address.
-    mapping(address => uint256) public tokensClaimed; /// @notice The amount of tokens the investor has claimed already.
+    // mapping(address => uint256) public tokensToVest;  /// @notice The total amount of $PROVE token allocated to that investor address.
+    // mapping(address => uint256) public tokensClaimed; /// @notice The amount of tokens the investor has claimed already.
 
     // -----------
     // Constructor
@@ -94,17 +93,18 @@ contract Vesting is Ownable {
     // Owner Functions
     // ---------------
 
-    /// @notice This function sets an address as true in the investors mapping.
-    /// @param account the wallet address of investor being added.
+    /// @notice This function sets an address as true in the investors mapping and also pushes a new investor element to the Investor array.
+    /// @param _account the wallet address of investor being added.
     /// @param _tokensToVest the amount of $PROVE that is being vested for that investor.
-    function addInvestor(address account, uint256 _tokensToVest) external onlyOwner() {
-        require(investors[account] == false, "Vesting.sol::addInvestor() investor is already added");
+    function addInvestor(address _account, uint256 _tokensToVest) external onlyOwner() {
+        require(investors[_account] == false, "Vesting.sol::addInvestor() investor is already added");
+        require(_account != address(0), "Vesting.sol::addInvestor() _account cannot be address(0)");
+        require(_tokensToVest > 0, "Vesting.sol::addInvestor() _tokensToVest must be gt 0");
 
-        investors[account] = true;
-        tokensToVest[account] = _tokensToVest;
-        tokensClaimed[account] = 0;
+        investors[_account] = true;
+        investorLibrary.push(Investor(_account, _tokensToVest, 0));
         
-        emit investorAdded(account);
+        emit investorAdded(_account);
     }
 
     /// @notice This function removes an investor from the investorLibrary.
@@ -158,5 +158,9 @@ contract Vesting is Ownable {
     /// @param account address of investor.
     /// @return bool true if investor exists, false otherwise.
     function isInvestor(address account) public view returns (bool) {}
+
+    function getInvestorLibrary() public view returns (Investor[] memory) {
+        return investorLibrary;
+    }
 
 }
