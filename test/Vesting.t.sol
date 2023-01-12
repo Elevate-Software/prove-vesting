@@ -99,5 +99,52 @@ contract VestingTest is Utility, Test {
         assertEq(IERC20(USDC).balanceOf(address(dev)),     100 * USD);
     }
 
+    // ~ addInvestor() tests ~
 
+    /// @dev Verifies addInvestor restrictions
+    function test_vesting_addInvestor_restrictions() public {
+        // Exploiter Jon should NOT be able to call addInvestor()
+        assert(!jon.try_addInvestor(address(vesting), address(joe), 10 ether));
+
+        // Investor Joe should NOT be able to call addInvestor()
+        assert(!joe.try_addInvestor(address(vesting), address(joe), 10 ether));
+
+        // Dev should be able to call addInvestor()
+        assert(dev.try_addInvestor(address(vesting), address(joe), 10 ether));
+
+        vm.startPrank(address(dev));
+
+        // Dev should NOT be able to add the same investor twice
+        vm.expectRevert("Vesting.sol::addInvestor() investor is already added");
+        vesting.addInvestor(address(joe), 10 ether);
+
+        // Dev should NOT be able to add address(0) as a param
+        vm.expectRevert("Vesting.sol::addInvestor() _account cannot be address(0)");
+        vesting.addInvestor(address(0), 10 ether);
+
+        // Dev should NOT be able to add 0 tokens as a param
+        vm.expectRevert("Vesting.sol::addInvestor() _tokensToVest must be gt 0");
+        vesting.addInvestor(address(jon), 0);
+
+        vm.stopPrank();
+    }
+
+    /// @dev Verifies addInvestor state changes
+    function test_vesting_addInvestor_state_changes() public {
+        // Pre-State check.
+        assertEq(vesting.investors(address(joe)),      false);
+        Vesting.Investor[] memory tempArr = vesting.getInvestorLibrary();
+        assertEq(tempArr.length,          0);
+
+        // Call enableVesting().
+        assert(dev.try_addInvestor(address(vesting), address(joe), 10 ether));
+
+        // Post-State check.
+        assertEq(vesting.investors(address(joe)),      true);
+        tempArr = vesting.getInvestorLibrary();
+        assertEq(tempArr.length,           1);
+        assertEq(tempArr[0].account,       address(joe));
+        assertEq(tempArr[0].tokensToVest,  10 ether);
+        assertEq(tempArr[0].tokensClaimed, 0);
+    }
 }

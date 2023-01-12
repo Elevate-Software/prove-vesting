@@ -12,7 +12,7 @@ contract Actor {
 
 
     //////////////////////////////////////////////////////////////////////////
-    ///                             GOGE TOKEN                             ///
+    ///                             PROVE VESTING                          ///
     //////////////////////////////////////////////////////////////////////////
 
 
@@ -24,6 +24,12 @@ contract Actor {
     function try_withdrawErc20(address _contract, address token) external returns (bool ok) {
         string memory sig = "withdrawErc20(address)";
         (ok,) = address(_contract).call(abi.encodeWithSignature(sig, token));
+    }
+
+    /// NOTE: Ensure, when creating the sig -> leave no spaces between param data types.
+    function try_addInvestor(address _contract, address account, uint256 tokensToVest) external returns (bool ok) {
+        string memory sig = "addInvestor(address,uint256)";
+        (ok,) = address(_contract).call(abi.encodeWithSignature(sig, account, tokensToVest));
     }
 
 }

@@ -689,8 +689,8 @@
       }
     },
     "src/Vesting.sol": {
-      "lastModificationDate": 1672961927438,
-      "contentHash": "6bb129c6dcbc6f155aedced527df378c",
+      "lastModificationDate": 1673563895710,
+      "contentHash": "7a0f855ad8174563a34707bb37ec789a",
       "sourceName": "src/Vesting.sol",
       "solcConfig": {
         "settings": {
@@ -877,8 +877,8 @@
       }
     },
     "src/users/Actor.sol": {
-      "lastModificationDate": 1672961497932,
-      "contentHash": "8bf4f13c577377393860f8a3a4f1aeb0",
+      "lastModificationDate": 1673562628712,
+      "contentHash": "f23e3a3020e63bdbcb86e98b4581ccbd",
       "sourceName": "src/users/Actor.sol",
       "solcConfig": {
         "settings": {
@@ -917,7 +917,7 @@
       }
     },
     "test/Utility.sol": {
-      "lastModificationDate": 1672961429954,
+      "lastModificationDate": 1672963244642,
       "contentHash": "fda4e3be9af9e1364615c579212a238f",
       "sourceName": "test/Utility.sol",
       "solcConfig": {
@@ -978,8 +978,8 @@
       }
     },
     "test/Vesting.t.sol": {
-      "lastModificationDate": 1672962591981,
-      "contentHash": "17ccb4cc76760a3243a77caa9225ca71",
+      "lastModificationDate": 1673563885970,
+      "contentHash": "d1ac0467bc60ae112fd7f6f5665ea079",
       "sourceName": "test/Vesting.t.sol",
       "solcConfig": {
         "settings": {

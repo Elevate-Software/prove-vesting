@@ -6,7 +6,7 @@ import {IERC20} from "./interfaces/Interfaces.sol";
 
 /// @dev Vesting Schedule: 12% day 1 then 8% every month thereafter.
 
-/// @notice This contract will hold $PROVE tokens in eskrow
+/// @notice This contract will hold $PROVE tokens in escrow
 ///         This contract will facilitate the private sale investor vesting tokens
 ///         This contract will follow a strict vesting schedule
 ///         This contract will follow a claim model
@@ -23,13 +23,18 @@ contract Vesting is Ownable {
 
     Investor[] investorLibrary;   /// @notice array of investors.
 
+    /// @param account        The wallet address of investor.
     /// @param tokensToVest   The total amount of $PROVE token allocated to that investor.
     /// @param tokensClaimed  The amount of tokens the investor has claimed already.
     struct Investor {
+        address account;
         uint256 tokensToVest;
         uint256 tokensClaimed;
     }
 
+    mapping(address => bool) public investors;        /// @notice Mapping to track investor addresses.
+    // mapping(address => uint256) public tokensToVest;  /// @notice The total amount of $PROVE token allocated to that investor address.
+    // mapping(address => uint256) public tokensClaimed; /// @notice The amount of tokens the investor has claimed already.
 
     // -----------
     // Constructor
@@ -47,7 +52,7 @@ contract Vesting is Ownable {
 
     /// @dev modifier to check if msg.sender is an investor.
     modifier onlyInvestor() {
-        // TODO: Add requirement
+        require(investors[msg.sender] == true, "Vesting.sol::onlyInvestor() msg.sender must be an investor");
         _;
     }
 
@@ -88,10 +93,19 @@ contract Vesting is Ownable {
     // Owner Functions
     // ---------------
 
-    /// @notice This function adds an address to the investorLibrary.
-    /// @param account the wallet address of investor being added.
-    /// @param tokensToVest the amount of $PROVE that is being vested for that investor.
-    function addInvestor(address account, uint256 tokensToVest) external onlyOwner() {}
+    /// @notice This function sets an address as true in the investors mapping and also pushes a new investor element to the Investor array.
+    /// @param _account the wallet address of investor being added.
+    /// @param _tokensToVest the amount of $PROVE that is being vested for that investor.
+    function addInvestor(address _account, uint256 _tokensToVest) external onlyOwner() {
+        require(investors[_account] == false, "Vesting.sol::addInvestor() investor is already added");
+        require(_account != address(0), "Vesting.sol::addInvestor() _account cannot be address(0)");
+        require(_tokensToVest > 0, "Vesting.sol::addInvestor() _tokensToVest must be gt 0");
+
+        investors[_account] = true;
+        investorLibrary.push(Investor(_account, _tokensToVest, 0));
+        
+        emit investorAdded(_account);
+    }
 
     /// @notice This function removes an investor from the investorLibrary.
     /// @param account the wallet address of investor that is being removed.
@@ -140,11 +154,13 @@ contract Vesting is Ownable {
     /// @return uint256 amount of tokens claimed by account.
     function getAmountClaimed(address account) public view returns (uint256) {}
 
-    /// @notice This function returns the specified account's position on the investorLibrary
-    /// @dev If bool is returned false, investor does not exist.
+    /// @notice This function returns a bool true if the investor exists, and false if they do not.
     /// @param account address of investor.
     /// @return bool true if investor exists, false otherwise.
-    /// @return uint256 index in investorLibrary that the account exists.
-    function isInvestor(address account) public view returns (bool, uint256) {}
+    function isInvestor(address account) public view returns (bool) {}
+
+    function getInvestorLibrary() public view returns (Investor[] memory) {
+        return investorLibrary;
+    }
 
 }
