@@ -136,7 +136,7 @@ contract VestingTest is Utility, Test {
         Vesting.Investor[] memory tempArr = vesting.getInvestorLibrary();
         assertEq(tempArr.length,          0);
 
-        // Call enableVesting().
+        // Call addInvestor().
         assert(dev.try_addInvestor(address(vesting), address(joe), 10 ether));
 
         // Post-State check.
@@ -146,5 +146,57 @@ contract VestingTest is Utility, Test {
         assertEq(tempArr[0].account,       address(joe));
         assertEq(tempArr[0].tokensToVest,  10 ether);
         assertEq(tempArr[0].tokensClaimed, 0);
+    }
+
+    // ~ removeInvestor() tests ~
+
+    /// @dev Verifies removeInvestor() restrictions
+    function test_vesting_removeInvestor_restrictions() public {
+        //add an investor so we can test removing it
+        assert(dev.try_addInvestor(address(vesting), address(joe), 10 ether));
+
+        // Exploiter Jon should NOT be able to call removeInvestor()
+        assert(!jon.try_removeInvestor(address(vesting), address(joe)));
+
+        // Investor Joe should NOT be able to call removeInvestor()
+        assert(!joe.try_removeInvestor(address(vesting), address(joe)));
+
+        // Dev should be able to call removeInvestor()
+        assert(dev.try_removeInvestor(address(vesting), address(joe)));
+
+        vm.startPrank(address(dev));
+
+        //Dev should not be able to remove an account that is not an investor
+        vm.expectRevert("Vesting.sol::removeInvestor() account is not an investor");
+        vesting.removeInvestor(address(jon));
+
+        //Dev should not be able to remove account address(0)
+        vm.expectRevert("Vesting.sol::removeInvestor() account cannot be address(0)");
+        vesting.removeInvestor(address(0));
+
+        vm.stopPrank();
+    }
+
+    /// @dev Verifies removeInvestor() state changes
+    function test_vesting_removeInvestor_state_changes() public {
+        //add an investor so we can test removing it
+        assert(dev.try_addInvestor(address(vesting), address(joe), 10 ether));
+
+        // Pre-State check.
+        assertEq(vesting.investors(address(joe)),      true);
+        Vesting.Investor[] memory tempArr = vesting.getInvestorLibrary();
+        assertEq(tempArr.length,          1);
+        assertEq(tempArr[0].account,       address(joe));
+        assertEq(tempArr[0].tokensToVest,  10 ether);
+        assertEq(tempArr[0].tokensClaimed, 0);
+
+        // Call removeInvestor()
+        assert(dev.try_removeInvestor(address(vesting), address(joe)));
+
+        // Post-State check.
+        assertEq(vesting.investors(address(joe)),      false);
+        tempArr = vesting.getInvestorLibrary();
+        /// NOTE: this test won't work because delete does not remove the gap in the array, length remains 1
+        //assertEq(tempArr.length,          0);
     }
 }

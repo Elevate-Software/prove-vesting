@@ -108,8 +108,23 @@ contract Vesting is Ownable {
     }
 
     /// @notice This function removes an investor from the investorLibrary.
-    /// @param account the wallet address of investor that is being removed.
-    function removeInvestor(address account) external onlyOwner() {}
+    /// @param _account the wallet address of investor that is being removed.
+    function removeInvestor(address _account) external onlyOwner() {
+        require(_account != address(0), "Vesting.sol::removeInvestor() account cannot be address(0)");
+        require(investors[_account] == true, "Vesting.sol::removeInvestor() account is not an investor");
+
+        uint idx;
+        for (uint i = 0; i < investorLibrary.length; i++) {
+            if (investorLibrary[i].account == _account) {
+                idx = i;
+                break;
+            }
+        }
+
+        delete investorLibrary[idx];
+        investors[_account] = false;
+
+    }
 
     /// @notice This function starts the vesting period.
     /// @dev will set start time to vestingStartUnix.
@@ -153,11 +168,6 @@ contract Vesting is Ownable {
     /// @param account address of investor.
     /// @return uint256 amount of tokens claimed by account.
     function getAmountClaimed(address account) public view returns (uint256) {}
-
-    /// @notice This function returns a bool true if the investor exists, and false if they do not.
-    /// @param account address of investor.
-    /// @return bool true if investor exists, false otherwise.
-    function isInvestor(address account) public view returns (bool) {}
 
     function getInvestorLibrary() public view returns (Investor[] memory) {
         return investorLibrary;
