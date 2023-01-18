@@ -121,7 +121,10 @@ contract Vesting is Ownable {
             }
         }
 
-        delete investorLibrary[idx];
+        Investor memory temp = investorLibrary[idx];
+        investorLibrary[idx] = investorLibrary[investorLibrary.length-1];
+        investorLibrary[investorLibrary.length-1] = temp;
+        investorLibrary.pop();
         investors[_account] = false;
 
     }

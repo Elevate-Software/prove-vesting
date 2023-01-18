@@ -196,7 +196,6 @@ contract VestingTest is Utility, Test {
         // Post-State check.
         assertEq(vesting.investors(address(joe)),      false);
         tempArr = vesting.getInvestorLibrary();
-        /// NOTE: this test won't work because delete does not remove the gap in the array, length remains 1
-        //assertEq(tempArr.length,          0);
+        assertEq(tempArr.length,          0);
     }
 }
