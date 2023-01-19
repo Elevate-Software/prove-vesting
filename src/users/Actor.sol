@@ -26,10 +26,15 @@ contract Actor {
         (ok,) = address(_contract).call(abi.encodeWithSignature(sig, token));
     }
 
-    /// NOTE: Ensure, when creating the sig -> leave no spaces between param data types.
+    /// @notice Ensure, when creating the sig -> leave no spaces between param data types.
     function try_addInvestor(address _contract, address account, uint256 tokensToVest) external returns (bool ok) {
         string memory sig = "addInvestor(address,uint256)";
         (ok,) = address(_contract).call(abi.encodeWithSignature(sig, account, tokensToVest));
+    }
+
+    function try_removeInvestor(address _contract, address account) external returns (bool ok) {
+        string memory sig = "removeInvestor(address)";
+        (ok,) = address(_contract).call(abi.encodeWithSignature(sig, account));
     }
 
 }

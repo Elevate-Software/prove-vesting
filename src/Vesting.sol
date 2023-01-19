@@ -67,8 +67,12 @@ contract Vesting is Ownable {
     event ProveClaimed(address account, uint256 amountClaimed);
 
     /// @notice This event is emitted when addInvestor() is successfully executed.
-    /// @param account is the wallet address of investor that was addes to the investorLibrary.
-    event investorAdded(address account);
+    /// @param account is the wallet address of investor that was added to the investorLibrary.
+    event InvestorAdded(address indexed account);
+
+    /// @notice This event is emitted when removeInvestor() is successfully executed.
+    /// @param account is the wallet address of investor that was added to the investorLibrary.
+    event InvestorRemoved(address indexed account);
 
     /// @notice This event is emitted when withdrawErc20() is executed.
     /// @param token address of Erc20 token.
@@ -104,12 +108,31 @@ contract Vesting is Ownable {
         investors[_account] = true;
         investorLibrary.push(Investor(_account, _tokensToVest, 0));
         
-        emit investorAdded(_account);
+        emit InvestorAdded(_account);
     }
 
     /// @notice This function removes an investor from the investorLibrary.
-    /// @param account the wallet address of investor that is being removed.
-    function removeInvestor(address account) external onlyOwner() {}
+    /// @param _account the wallet address of investor that is being removed.
+    function removeInvestor(address _account) external onlyOwner() {
+        require(_account != address(0), "Vesting.sol::removeInvestor() account cannot be address(0)");
+        require(investors[_account] == true, "Vesting.sol::removeInvestor() account is not an investor");
+
+        uint idx;
+        for (uint i = 0; i < investorLibrary.length; i++) {
+            if (investorLibrary[i].account == _account) {
+                idx = i;
+                break;
+            }
+        }
+
+        Investor memory temp = investorLibrary[idx];
+        investorLibrary[idx] = investorLibrary[investorLibrary.length-1];
+        investorLibrary[investorLibrary.length-1] = temp;
+        investorLibrary.pop();
+        investors[_account] = false;
+
+        emit InvestorRemoved(_account);
+    }
 
     /// @notice This function starts the vesting period.
     /// @dev will set start time to vestingStartUnix.
@@ -154,7 +177,6 @@ contract Vesting is Ownable {
     /// @return uint256 amount of tokens claimed by account.
     function getAmountClaimed(address account) public view returns (uint256) {}
 
-    /// @notice This function returns the Investor array, investorLibrary.
     function getInvestorLibrary() public view returns (Investor[] memory) {
         return investorLibrary;
     }
