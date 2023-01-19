@@ -170,7 +170,15 @@ contract Vesting is Ownable {
     /// @notice This function returns the amount of tokens to claim for a specified investor.
     /// @param account  address of investor.
     /// @return uint256 amount of tokens to claim.
-    function getAmountToClaim(address account) public view returns (uint256) {}
+    function getAmountToClaim(address account) public view returns (uint256) {
+        // calculate amount of tokens availble to be claimed by account
+        // vestingStartUnix <= block.timestamp -> immediately 12%*tokensToVest is available to claim
+
+        // (vestingStartUnix - block.timestamp) / 4 weeks = x
+        // x * (8%*tokensToVest)
+
+        // return value
+    }
 
     /// @notice This function returns the amount of tokens an investor HAS claimed.
     /// @param account address of investor.
