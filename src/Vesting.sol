@@ -67,8 +67,12 @@ contract Vesting is Ownable {
     event ProveClaimed(address account, uint256 amountClaimed);
 
     /// @notice This event is emitted when addInvestor() is successfully executed.
-    /// @param account is the wallet address of investor that was addes to the investorLibrary.
-    event investorAdded(address account);
+    /// @param account is the wallet address of investor that was added to the investorLibrary.
+    event InvestorAdded(address indexed account);
+
+    /// @notice This event is emitted when removeInvestor() is successfully executed.
+    /// @param account is the wallet address of investor that was added to the investorLibrary.
+    event InvestorRemoved(address indexed account);
 
     /// @notice This event is emitted when withdrawErc20() is executed.
     /// @param token address of Erc20 token.
@@ -104,7 +108,7 @@ contract Vesting is Ownable {
         investors[_account] = true;
         investorLibrary.push(Investor(_account, _tokensToVest, 0));
         
-        emit investorAdded(_account);
+        emit InvestorAdded(_account);
     }
 
     /// @notice This function removes an investor from the investorLibrary.
@@ -127,6 +131,7 @@ contract Vesting is Ownable {
         investorLibrary.pop();
         investors[_account] = false;
 
+        emit InvestorRemoved(_account);
     }
 
     /// @notice This function starts the vesting period.

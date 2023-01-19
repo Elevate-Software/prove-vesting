@@ -198,4 +198,46 @@ contract VestingTest is Utility, Test {
         tempArr = vesting.getInvestorLibrary();
         assertEq(tempArr.length,          0);
     }
+
+    /// @dev Verifies removeInvestor() pops elements correctly from investorLibrary[]
+    function test_vesting_removeInvestor_largeArray() public {
+        Actor tim = new Actor();
+
+        //add an investor so we can test removing it
+        assert(dev.try_addInvestor(address(vesting), address(joe), 10 ether));
+        assert(dev.try_addInvestor(address(vesting), address(jon), 20 ether));
+        assert(dev.try_addInvestor(address(vesting), address(tim), 30 ether));
+
+        // Pre-State check.
+        assertEq(vesting.investors(address(joe)),      true);
+        assertEq(vesting.investors(address(jon)),      true);
+        assertEq(vesting.investors(address(tim)),      true);
+        Vesting.Investor[] memory tempArr = vesting.getInvestorLibrary();
+        assertEq(tempArr.length,          3);
+        assertEq(tempArr[0].account,       address(joe));
+        assertEq(tempArr[0].tokensToVest,  10 ether);
+        assertEq(tempArr[0].tokensClaimed, 0);
+        assertEq(tempArr[1].account,       address(jon));
+        assertEq(tempArr[1].tokensToVest,  20 ether);
+        assertEq(tempArr[1].tokensClaimed, 0);
+        assertEq(tempArr[2].account,       address(tim));
+        assertEq(tempArr[2].tokensToVest,  30 ether);
+        assertEq(tempArr[2].tokensClaimed, 0);
+
+        // Call removeInvestor()
+        assert(dev.try_removeInvestor(address(vesting), address(joe)));
+
+        // Post-State check.
+        assertEq(vesting.investors(address(joe)),      false);
+        assertEq(vesting.investors(address(jon)),      true);
+        assertEq(vesting.investors(address(tim)),      true);
+        tempArr = vesting.getInvestorLibrary();
+        assertEq(tempArr.length,          2);
+        assertEq(tempArr[0].account,       address(tim));
+        assertEq(tempArr[0].tokensToVest,  30 ether);
+        assertEq(tempArr[0].tokensClaimed, 0);
+        assertEq(tempArr[1].account,       address(jon));
+        assertEq(tempArr[1].tokensToVest,  20 ether);
+        assertEq(tempArr[1].tokensClaimed, 0);
+    }
 }
