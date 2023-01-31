@@ -240,4 +240,35 @@ contract VestingTest is Utility, Test {
         assertEq(tempArr[1].tokensToVest,  20 ether);
         assertEq(tempArr[1].tokensClaimed, 0);
     }
+
+    // ~ getAmountToClaim() tests ~
+
+    /// @dev Verifies getAmountToClaim() restrictions
+    function test_vesting_getAmountToClaim_restrictions() public {
+        
+    }
+
+    /// @dev Verifies getAmountToClaim() edge cases
+    function test_vesting_getAmountToClaim_edge_cases() public {
+
+    }
+
+    // ~ claim() tests ~
+
+    /// @dev Verifies claim() restrictions
+    function test_vesting_claim_restrictions() public {
+
+    }
+
+    /// @dev Verifies claim() state changes
+    function test_vesting_claim_state_changes() public {
+
+    }
+
+    // ~ getAmountClaimed() test ~
+
+    /// @dev Verifies getAmountClaimed() restrictions and correctness
+    function test_vesting_getAmountClaimed() public {
+
+    }
 }
