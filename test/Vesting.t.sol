@@ -362,5 +362,8 @@ contract VestingTest is Utility, Test {
     /// @dev Verifies getAmountClaimed() restrictions and correctness
     function test_vesting_getAmountClaimed() public {
 
+
+        //edit
+
     }
 }
