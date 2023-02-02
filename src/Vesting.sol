@@ -95,17 +95,15 @@ contract Vesting is Ownable {
         uint256 amountToClaim = getAmountToClaim(msg.sender);
         require(amountToClaim > 0, "Vesting.sol::claim() investor has no tokens to claim");
 
-        //transfer the tokens
+        // Transfer the tokens
         bool success = IERC20(proveToken).transfer(msg.sender, amountToClaim);
         require(success, "Vesting.sol::claim() transfer unsuccessful");
 
-        //update Investor.tokensClaimed
-        for (uint i = 0; i < investorLibrary.length; i++) {
-            if (investorLibrary[i].account == msg.sender) {
-                investorLibrary[i].tokensClaimed = amountToClaim;
-                break;
-            }
-        }
+        // Get Investor position in array
+        uint256 idx = locateInvestor(msg.sender);
+
+        // Update Investor.tokensClaimed
+        investorLibrary[idx].tokensClaimed = amountToClaim;
 
         emit ProveClaimed(msg.sender, amountToClaim);
     }
@@ -133,15 +131,8 @@ contract Vesting is Ownable {
     /// @param _account the wallet address of investor that is being removed.
     function removeInvestor(address _account) external onlyOwner() {
         require(_account != address(0), "Vesting.sol::removeInvestor() account cannot be address(0)");
-        require(investors[_account] == true, "Vesting.sol::removeInvestor() account is not an investor");
 
-        uint idx;
-        for (uint i = 0; i < investorLibrary.length; i++) {
-            if (investorLibrary[i].account == _account) {
-                idx = i;
-                break;
-            }
-        }
+        uint256 idx = locateInvestor(_account);
 
         Investor memory temp = investorLibrary[idx];
         investorLibrary[idx] = investorLibrary[investorLibrary.length-1];
@@ -186,52 +177,76 @@ contract Vesting is Ownable {
     // ----
 
     /// @notice This function returns the amount of tokens to claim for a specified investor.
-    /// @param _account  address of investor.
+    /// @param _account address of investor.
     /// @return uint256 amount of tokens to claim.
     function getAmountToClaim(address _account) public view returns (uint256) {
-        // calculate amount of tokens availble to be claimed by account
-        require(vestingEnabled, "Vesting.sol::getAmountToClaim() vesting is not enabled");
-        require(investors[_account] == true, "Vesting.sol::getAmountToClaim() account is not an investor");
-        require(_account != address(0), "Vesting.sol::getAmountToClaim() account is address(0)");
+        if (investors[_account] && vestingEnabled) {
 
-        uint idx;
-        for (uint i = 0; i < investorLibrary.length; i++) {
-            if (investorLibrary[i].account == _account) {
-                idx = i;
-                break;
+            uint256 idx = locateInvestor(_account);
+
+            uint tokensToVest = getTokensToVest(_account);
+
+            if (investorLibrary[idx].tokensClaimed >= tokensToVest) {
+                return 0;
             }
-        }
 
-        uint tokensToVest = investorLibrary[idx].tokensToVest;
-        uint monthsPassed = ( (vestingStartUnix - block.timestamp) / 4 weeks ); 
-        if (monthsPassed > 11) {
-            monthsPassed = 11;
-        }
-        uint amountToClaim = (tokensToVest * 12 / 100) + ( monthsPassed * (tokensToVest * 8 / 100) );
-        amountToClaim = amountToClaim - investorLibrary[idx].tokensClaimed;
+            uint monthsPassed = ((block.timestamp - vestingStartUnix) / 4 weeks); 
+            uint amountToClaim = (tokensToVest * 12 / 100) + (monthsPassed * (tokensToVest * 8 / 100));
 
-        return amountToClaim;
+            if (amountToClaim > tokensToVest) {
+                amountToClaim = tokensToVest - investorLibrary[idx].tokensClaimed;
+            }
+            else {
+                amountToClaim = amountToClaim - investorLibrary[idx].tokensClaimed;
+            }
+
+            return amountToClaim;
+        }
+        else {
+            return 0;
+        }
     }
 
     /// @notice This function returns the amount of tokens an investor HAS claimed.
     /// @param _account address of investor.
     /// @return uint256 amount of tokens claimed by account.
     function getAmountClaimed(address _account) public view returns (uint256) {
-        require(investors[_account] == true, "Vesting.sol::getAmountClaimed() account is not an investor");
+        if (investors[_account]) {
 
-        uint idx;
-        for (uint i = 0; i < investorLibrary.length; i++) {
+            uint256 idx = locateInvestor(_account);
+            return investorLibrary[idx].tokensClaimed;
+        }
+        else {
+            return 0;
+        }
+    }
+
+    function getTokensToVest(address _account) public view returns (uint256) {
+        if (investors[_account]) {
+
+            uint256 idx = locateInvestor(_account);
+            return investorLibrary[idx].tokensToVest;
+        }
+        else {
+            return 0;
+        }
+    }
+
+    function locateInvestor(address _account) internal view returns (uint256) {
+        require(investors[_account] == true, "Vesting.sol::locateInvestor() account is not an investor");
+
+        uint256 idx;
+
+        for (uint256 i = 0; i < investorLibrary.length; i++) {
             if (investorLibrary[i].account == _account) {
                 idx = i; 
                 break;
             }
         }
-
-        return investorLibrary[idx].tokensClaimed;
+        return idx;
     }
 
     function getInvestorLibrary() public view returns (Investor[] memory) {
         return investorLibrary;
     }
-
 }
