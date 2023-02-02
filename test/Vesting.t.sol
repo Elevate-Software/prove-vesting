@@ -245,24 +245,116 @@ contract VestingTest is Utility, Test {
 
     /// @dev Verifies getAmountToClaim() restrictions
     function test_vesting_getAmountToClaim_restrictions() public {
-        
+        vm.startPrank(address(dev));
+
+        //Should not work if vesting isn't enabled
+        vm.expectRevert("Vesting.sol::getAmountToClaim() vesting is not enabled");
+        vesting.getAmountToClaim(address(jon));
+
+        //Add jon as investor
+        assert(dev.try_addInvestor(address(vesting), address(jon), 20 ether));
+
+        //Enable vesting
+        vesting.enableVesting();
+
+        //Should not work if account isn't an investor
+        vm.expectRevert("Vesting.sol::getAmountToClaim() account is not an investor");
+        vesting.getAmountToClaim(address(joe));
+
+        //Should not work for address(0)
+        vm.expectRevert("Vesting.sol::getAmountToClaim() account is address(0)");
+        vesting.getAmountToClaim(address(0));
+
+        vm.stopPrank();
+
     }
 
     /// @dev Verifies getAmountToClaim() edge cases
     function test_vesting_getAmountToClaim_edge_cases() public {
+        //Add some investors then start the vesting period
+        assert(dev.try_addInvestor(address(vesting), address(jon), 20 ether));
+        assert(dev.try_addInvestor(address(vesting), address(joe), 20 ether));
 
+        assert(dev.try_enableVesting(address(vesting)));
+
+        //Move time ahead 3 months
+        skip(12 weeks);
+
+        vm.startPrank(address(dev));
+
+        assert(vesting.getAmountToClaim(address(jon)) > 0);
+        assert(vesting.getAmountToClaim(address(joe)) == vesting.getAmountToClaim(address(jon)));
+
+        assert(dev.try_addInvestor(address(vesting), address(dev), 20 ether));
+
+        skip(12 weeks);
+
+        assert(vesting.getAmountToClaim(address(dev)) > 0);
+        assert(vesting.getAmountToClaim(address(dev)) < vesting.getAmountToClaim(address(jon)));
+
+        skip(52 weeks);
+
+        assert(vesting.getAmountToClaim(address(dev)) == vesting.getAmountToClaim(address(jon)));
+
+        vm.stopPrank();
     }
 
     // ~ claim() tests ~
 
     /// @dev Verifies claim() restrictions
     function test_vesting_claim_restrictions() public {
+        //Jon is trying to claim
+        vm.startPrank(address(jon));
+
+        //Should not work if caller isn't investor
+        vm.expectRevert("Vesting.sol::onlyInvestor() msg.sender must be an investor");
+        vesting.claim();
+
+        //Add jon as investor
+        assert(dev.try_addInvestor(address(vesting), address(jon), 0 ether));
+
+        //Should not work if vesting isn't enabled
+        vm.expectRevert("Vesting.sol::claim() vesting is not enabled");
+        vesting.claim();
+
+        //Enable vesting
+        assert(dev.try_enableVesting(address(vesting)));
+
+        //Still should not work since Jon has no tokens to vest
+        vm.expectRevert("Vesting.sol::claim() investor has no tokens to claim");
+        vesting.claim();
+
+        //remove Jon and add him back with tokens to vest
+        assert(dev.try_removeInvestor(address(vesting), address(jon)));
+        assert(dev.try_addInvestor(address(vesting), address(jon), 20 ether));
+
+        assert(jon.try_claim(address(vesting)));
+
+        vm.stopPrank();
 
     }
 
     /// @dev Verifies claim() state changes
     function test_vesting_claim_state_changes() public {
+        //Jon is trying to claim
+        vm.startPrank(address(jon));
 
+        //Add jon as investor
+        assert(dev.try_addInvestor(address(vesting), address(jon), 20 ether));
+
+        //Enable vesting
+        assert(dev.try_enableVesting(address(vesting)));
+
+        // Pre-State check
+        assertEq(IERC20(vesting.proveToken()).balanceOf(address(jon)), 0);
+
+        // Jon is going to call claim
+        assert(jon.try_claim(address(vesting)));
+
+        // Post-State check
+        assert(IERC20(vesting.proveToken()).balanceOf(address(jon)) > 0);
+
+        vm.stopPrank();
     }
 
     // ~ getAmountClaimed() test ~

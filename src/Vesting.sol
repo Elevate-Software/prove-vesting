@@ -186,12 +186,13 @@ contract Vesting is Ownable {
     // ----
 
     /// @notice This function returns the amount of tokens to claim for a specified investor.
-    /// @param account  address of investor.
+    /// @param _account  address of investor.
     /// @return uint256 amount of tokens to claim.
     function getAmountToClaim(address _account) public view returns (uint256) {
         // calculate amount of tokens availble to be claimed by account
         require(vestingEnabled, "Vesting.sol::getAmountToClaim() vesting is not enabled");
         require(investors[_account] == true, "Vesting.sol::getAmountToClaim() account is not an investor");
+        require(_account != address(0), "Vesting.sol::getAmountToClaim() account is address(0)");
 
         uint idx;
         for (uint i = 0; i < investorLibrary.length; i++) {
@@ -206,14 +207,14 @@ contract Vesting is Ownable {
         if (monthsPassed > 11) {
             monthsPassed = 11;
         }
-        uint amountToClaim = tokensToVest.mul(12).div(100) + ( monthsPassed * tokensToVest.mul(8).div(100) );
+        uint amountToClaim = (tokensToVest * 12 / 100) + ( monthsPassed * (tokensToVest * 8 / 100) );
         amountToClaim = amountToClaim - investorLibrary[idx].tokensClaimed;
 
         return amountToClaim;
     }
 
     /// @notice This function returns the amount of tokens an investor HAS claimed.
-    /// @param account address of investor.
+    /// @param _account address of investor.
     /// @return uint256 amount of tokens claimed by account.
     function getAmountClaimed(address _account) public view returns (uint256) {
         require(investors[_account] == true, "Vesting.sol::getAmountClaimed() account is not an investor");

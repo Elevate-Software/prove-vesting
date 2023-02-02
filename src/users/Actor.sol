@@ -37,4 +37,14 @@ contract Actor {
         (ok,) = address(_contract).call(abi.encodeWithSignature(sig, account));
     }
 
+    function try_getAmountToClaim(address _contract, address account) external returns (bool ok) {
+        string memory sig = "getAmountToClaim(address)";
+        (ok,) = address(_contract).call(abi.encodeWithSignature(sig, account));
+    }
+
+    function try_claim(address _contract) external returns (bool ok) {
+        string memory sig = "claim()";
+        (ok,) = address(_contract).call(abi.encodeWithSignature(sig));
+    }
+
 }
