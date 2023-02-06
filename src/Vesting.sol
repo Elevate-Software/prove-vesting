@@ -103,7 +103,9 @@ contract Vesting is Ownable {
         uint256 idx = locateInvestor(msg.sender);
 
         // Update Investor.tokensClaimed
-        investorLibrary[idx].tokensClaimed = amountToClaim;
+        // missing the + below was a BIG problem. 
+        // investor could've came back and kept claiming, every time resetting how much they had claimed instead of ADDING to it
+        investorLibrary[idx].tokensClaimed += amountToClaim;
 
         emit ProveClaimed(msg.sender, amountToClaim);
     }
@@ -221,6 +223,9 @@ contract Vesting is Ownable {
         }
     }
 
+    /// @notice This function returns an investors tokensToVest (amount of $PROVE allocated to that investor)
+    /// @param _account address of investor
+    /// @return uint256 investor's tokensToVest
     function getTokensToVest(address _account) public view returns (uint256) {
         if (investors[_account]) {
 
@@ -232,6 +237,9 @@ contract Vesting is Ownable {
         }
     }
 
+    /// @notice This function returns the index location of an account in the investor library array
+    /// @param _account address of investor
+    /// @return uint256 investor's index in the investor library array
     function locateInvestor(address _account) internal view returns (uint256) {
         require(investors[_account] == true, "Vesting.sol::locateInvestor() account is not an investor");
 
@@ -246,6 +254,8 @@ contract Vesting is Ownable {
         return idx;
     }
 
+    /// @notice This function returns the investor library array
+    /// @return Investor[] memory the array of investor structs 
     function getInvestorLibrary() public view returns (Investor[] memory) {
         return investorLibrary;
     }

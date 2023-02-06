@@ -14,14 +14,16 @@ contract VestingTest is Utility, Test {
 
         // deploy Vesting contract
         vesting = new Vesting(
-            address(222),
+            //use compound for now just so we can actually deal the tokens out in test cases without having an EVM revert
+            //was "222" before
+            address(0xc00e94Cb662C3520282E6f5717214004A7f26888),  
             address(dev)
         );
     }
 
     // Initial State Test.
     function test_vesting_init_state() public {
-        assertEq(vesting.proveToken(),       address(222));
+        assertEq(vesting.proveToken(),       address(0xc00e94Cb662C3520282E6f5717214004A7f26888));
         assertEq(vesting.vestingStartUnix(), 0);
         assertEq(vesting.vestingEnabled(),   false);
     }
@@ -243,8 +245,6 @@ contract VestingTest is Utility, Test {
 
     // ~ getAmountToClaim() tests ~\
 
-    // TODO: Verify amountToClaim warp 11 months == tokensToVest
-
     /// @dev Verifies getAmountToClaim() restrictions
     function test_vesting_getAmountToClaim_restrictions() public {
         // Add jon as investor
@@ -256,7 +256,7 @@ contract VestingTest is Utility, Test {
         // Enable vesting
         dev.try_enableVesting(address(vesting));
 
-        // Should not work if account isn't an investor
+        // Should return 0 for Joe since account isn't an investor
         assertEq(vesting.getAmountToClaim(address(joe)), 0);
 
         // Verify address(0) returns 0
@@ -265,9 +265,10 @@ contract VestingTest is Utility, Test {
 
     /// @dev Verifies getAmountToClaim()
     function test_vesting_getAmountToClaim() public {
+        //1 Million prove tokens (same decimals as ether 10**18)
         uint256 _amount = 1_000_000 ether;
 
-        // Add some investors then start the vesting period
+        // Add investor Jon
         assert(dev.try_addInvestor(address(vesting), address(jon), _amount));
 
         // Verify tokensToVest == _amount
@@ -283,21 +284,22 @@ contract VestingTest is Utility, Test {
         uint256 toClaim = (_amount * 12 / 100) + (3 * (_amount * 8 / 100));
         assertEq(vesting.getAmountToClaim(address(jon)), toClaim);
 
-        // Skip 12 months
-        skip(52 weeks);
+        // Skip 8 months to get to 11 (should be 100% of tokensToVest now)
+        skip(32 weeks);
 
-        // Verify amountToClaim(jon) after 12 months
+        // Verify amountToClaim(jon) after 11 months
         toClaim = (_amount * 12 / 100) + (11 * (_amount * 8 / 100));
         assertEq(vesting.getAmountToClaim(address(jon)), toClaim);
         assertEq(vesting.getAmountToClaim(address(jon)), _amount);
     }
 
-    // TODO: Add edge cases - claim when it's less than 1 month, claim after 11> months, claim in the middle then the rest later, claim in the middle then the rest after 11 months.
-
     // ~ claim() tests ~
 
     /// @dev Verifies claim() restrictions
     function test_vesting_claim_restrictions() public {
+        // *First fill up the contract with PROVE tokens 
+        deal(0xc00e94Cb662C3520282E6f5717214004A7f26888, address(vesting), 5_000_000 ether);
+
         // Jon is trying to claim
         vm.startPrank(address(jon));
 
@@ -332,11 +334,14 @@ contract VestingTest is Utility, Test {
 
     /// @dev Verifies claim() state changes
     function test_vesting_claim_state_changes() public {
+        // *First fill up the contract with PROVE tokens 
+        deal(0xc00e94Cb662C3520282E6f5717214004A7f26888, address(vesting), 5_000_000 ether);
+
         //Jon is trying to claim
         vm.startPrank(address(jon));
 
         //Add jon as investor
-        assert(dev.try_addInvestor(address(vesting), address(jon), 20 ether));
+        assert(dev.try_addInvestor(address(vesting), address(jon), 1_000_000 ether));
 
         //Enable vesting
         assert(dev.try_enableVesting(address(vesting)));
@@ -353,13 +358,55 @@ contract VestingTest is Utility, Test {
         vm.stopPrank();
     }
 
-    // ~ getAmountClaimed() test ~
+    /// @dev Verifies claim() edge cases
+    function test_vesting_claim_edge_cases() public {
+        // *First fill up the contract with PROVE tokens 
+        deal(0xc00e94Cb662C3520282E6f5717214004A7f26888, address(vesting), 5_000_000 ether);
 
-    /// @dev Verifies getAmountClaimed() restrictions and correctness
-    function test_vesting_getAmountClaimed() public {
+        //Enable vesting
+        assert(dev.try_enableVesting(address(vesting)));
 
+        // Adding three investors for three edge cases 
+        // Add jon as investor
+        assert(dev.try_addInvestor(address(vesting), address(jon), 1_000_000 ether));
 
-        //edit
+        // Add joe as investor
+        assert(dev.try_addInvestor(address(vesting), address(joe), 1_000_000 ether));
+
+        // Add dev as investor
+        assert(dev.try_addInvestor(address(vesting), address(dev), 1_000_000 ether));
+
+        // Jon is trying to claim after less than one month.
+        skip(2 weeks);
+        assert(jon.try_claim(address(vesting)));
+
+        // Jon should have only gotten 12% of his tokensToVest
+        assertEq(IERC20(vesting.proveToken()).balanceOf(address(jon)), (1_000_000 ether * 12 / 100) );
+
+        // Skip another 22 weeks to 6 months total
+        skip(22 weeks);
+        // Joe is trying to claim some in the middle
+        assert(joe.try_claim(address(vesting)));
+
+        // Joe should have only gotten 60% of his tokensToVest
+        assertEq(IERC20(vesting.proveToken()).balanceOf(address(joe)), (1_000_000 ether * 60 / 100));
+
+        // Skip another 20 weeks to 11 months total
+        skip(20 weeks);
+        // Joe is going to claim again and it should be the rest of his tokens
+        assert(joe.try_claim(address(vesting)));
+
+        // Joe should have 100% of his tokensToVest
+        assertEq(IERC20(vesting.proveToken()).balanceOf(address(joe)), (1_000_000 ether));
+
+        // Skip a year forward
+        skip(52 weeks);
+        // Dev is going to claim far after the end of the vesting schedule
+        assert(dev.try_claim(address(vesting)));
+
+        // Dev should have 100% of their tokens but no more
+        assertEq(IERC20(vesting.proveToken()).balanceOf(address(dev)), (1_000_000 ether));
 
     }
+
 }
