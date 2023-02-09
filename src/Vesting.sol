@@ -96,15 +96,12 @@ contract Vesting is Ownable {
         require(amountToClaim > 0, "Vesting.sol::claim() investor has no tokens to claim");
 
         // Transfer the tokens
-        bool success = IERC20(proveToken).transfer(msg.sender, amountToClaim);
-        require(success, "Vesting.sol::claim() transfer unsuccessful");
+        require(IERC20(proveToken).transfer(msg.sender, amountToClaim), "Vesting.sol::claim() transfer unsuccessful");
 
         // Get Investor position in array
         uint256 idx = locateInvestor(msg.sender);
 
         // Update Investor.tokensClaimed
-        // missing the + below was a BIG problem. 
-        // investor could've came back and kept claiming, every time resetting how much they had claimed instead of ADDING to it
         investorLibrary[idx].tokensClaimed += amountToClaim;
 
         emit ProveClaimed(msg.sender, amountToClaim);
@@ -195,7 +192,7 @@ contract Vesting is Ownable {
             uint monthsPassed = ((block.timestamp - vestingStartUnix) / 4 weeks); 
             uint amountToClaim = (tokensToVest * 12 / 100) + (monthsPassed * (tokensToVest * 8 / 100));
 
-            if (amountToClaim > tokensToVest) {
+            if (amountToClaim > tokensToVest || monthsPassed >= 11) {
                 amountToClaim = tokensToVest - investorLibrary[idx].tokensClaimed;
             }
             else {
@@ -228,7 +225,6 @@ contract Vesting is Ownable {
     /// @return uint256 investor's tokensToVest
     function getTokensToVest(address _account) public view returns (uint256) {
         if (investors[_account]) {
-
             uint256 idx = locateInvestor(_account);
             return investorLibrary[idx].tokensToVest;
         }
@@ -251,6 +247,7 @@ contract Vesting is Ownable {
                 break;
             }
         }
+
         return idx;
     }
 

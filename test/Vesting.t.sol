@@ -334,14 +334,16 @@ contract VestingTest is Utility, Test {
 
     /// @dev Verifies claim() state changes
     function test_vesting_claim_state_changes() public {
+        uint _amount = 1_000_000 ether;
+
         // *First fill up the contract with PROVE tokens 
-        deal(0xc00e94Cb662C3520282E6f5717214004A7f26888, address(vesting), 5_000_000 ether);
+        deal(0xc00e94Cb662C3520282E6f5717214004A7f26888, address(vesting), _amount);
 
         //Jon is trying to claim
         vm.startPrank(address(jon));
 
         //Add jon as investor
-        assert(dev.try_addInvestor(address(vesting), address(jon), 1_000_000 ether));
+        assert(dev.try_addInvestor(address(vesting), address(jon), _amount));
 
         //Enable vesting
         assert(dev.try_enableVesting(address(vesting)));
@@ -353,7 +355,107 @@ contract VestingTest is Utility, Test {
         assert(jon.try_claim(address(vesting)));
 
         // Post-State check
-        assert(IERC20(vesting.proveToken()).balanceOf(address(jon)) > 0);
+        assertEq(IERC20(vesting.proveToken()).balanceOf(address(jon)), _amount * 12 / 100);
+
+        // Skip 4 weeks
+        skip(4 weeks);
+
+        // Jon is going to call claim
+        assert(jon.try_claim(address(vesting)));
+
+        // Post-State check
+        assertEq(IERC20(vesting.proveToken()).balanceOf(address(jon)), _amount * 20 / 100);
+
+        // Skip 4 weeks
+        skip(4 weeks);
+
+        // Jon is going to call claim
+        assert(jon.try_claim(address(vesting)));
+
+        // Post-State check
+        assertEq(IERC20(vesting.proveToken()).balanceOf(address(jon)), _amount * 28 / 100);
+
+        // Skip 12 weeks
+        skip(12 weeks);
+
+        // Jon is going to call claim
+        assert(jon.try_claim(address(vesting)));
+
+        // Post-State check
+        assertEq(IERC20(vesting.proveToken()).balanceOf(address(jon)), _amount * 52 / 100);
+
+        // Skip 24 weeks
+        skip(24 weeks);
+
+        // Jon is going to call claim
+        assert(jon.try_claim(address(vesting)));
+
+        // Post-State check
+        assertEq(IERC20(vesting.proveToken()).balanceOf(address(jon)), _amount);
+
+        vm.stopPrank();
+    }
+
+    /// @dev Verifies claim() state changes using fuzzing
+    function test_vesting_claim_fuzzing(uint256 _amount) public {
+        _amount = bound(_amount, 100_000 ether, 100_000_000 ether);
+
+        // *First fill up the contract with PROVE tokens 
+        deal(0xc00e94Cb662C3520282E6f5717214004A7f26888, address(vesting), _amount);
+
+        //Jon is trying to claim
+        vm.startPrank(address(jon));
+
+        //Add jon as investor
+        assert(dev.try_addInvestor(address(vesting), address(jon), _amount));
+
+        //Enable vesting
+        assert(dev.try_enableVesting(address(vesting)));
+
+        // Pre-State check
+        assertEq(IERC20(vesting.proveToken()).balanceOf(address(jon)), 0);
+
+        // Jon is going to call claim
+        assert(jon.try_claim(address(vesting)));
+
+        // Post-State check
+        withinDiff(IERC20(vesting.proveToken()).balanceOf(address(jon)), _amount * 12 / 100, 1 ether);
+
+        // Skip 4 weeks
+        skip(4 weeks);
+
+        // Jon is going to call claim
+        assert(jon.try_claim(address(vesting)));
+
+        // Post-State check
+        withinDiff(IERC20(vesting.proveToken()).balanceOf(address(jon)), _amount * 20 / 100, 1 ether);
+
+        // Skip 4 weeks
+        skip(4 weeks);
+
+        // Jon is going to call claim
+        assert(jon.try_claim(address(vesting)));
+
+        // Post-State check
+        withinDiff(IERC20(vesting.proveToken()).balanceOf(address(jon)), _amount * 28 / 100, 1 ether);
+
+        // Skip 12 weeks
+        skip(12 weeks);
+
+        // Jon is going to call claim
+        assert(jon.try_claim(address(vesting)));
+
+        // Post-State check
+        withinDiff(IERC20(vesting.proveToken()).balanceOf(address(jon)), _amount * 52 / 100, 1 ether);
+
+        // Skip 24 weeks
+        skip(24 weeks);
+
+        // Jon is going to call claim
+        assert(jon.try_claim(address(vesting)));
+
+        // Post-State check
+        assertEq(IERC20(vesting.proveToken()).balanceOf(address(jon)), _amount);
 
         vm.stopPrank();
     }
