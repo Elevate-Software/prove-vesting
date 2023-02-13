@@ -184,6 +184,216 @@
     "setFeeTo(address)": "f46901ed",
     "setFeeToSetter(address)": "a2e74af6"
   },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"token0\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"token1\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"pair\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"PairCreated\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"allPairs\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"pair\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"allPairsLength\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"}],\"name\":\"createPair\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"pair\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"feeTo\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"feeToSetter\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenA\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"tokenB\",\"type\":\"address\"}],\"name\":\"getPair\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"pair\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"setFeeTo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"setFeeToSetter\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/interfaces/Interfaces.sol\":\"IUniswapV2Factory\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\"]},\"sources\":{\"src/interfaces/Interfaces.sol\":{\"keccak256\":\"0x741b318f522ba8451f4a2e40afcf59e995484318fabe7c57adeba3124bbd7e04\",\"license\":\"GPL-3.0-or-later\",\"urls\":[\"bzz-raw://dba0a37a10519080f892d5c8b87a0ec026ef73492195a901e49f74766b5915f7\",\"dweb:/ipfs/QmduauRea8YdqJaMeHiYH2tRtbydoqgVirSaTzbXMoEjYX\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.17+commit.8df45f5f"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "token0",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "address",
+              "name": "token1",
+              "type": "address",
+              "indexed": true
+            },
+            {
+              "internalType": "address",
+              "name": "pair",
+              "type": "address",
+              "indexed": false
+            },
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256",
+              "indexed": false
+            }
+          ],
+          "type": "event",
+          "name": "PairCreated",
+          "anonymous": false
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "allPairs",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "pair",
+              "type": "address"
+            }
+          ]
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "allPairsLength",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "tokenA",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "tokenB",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "createPair",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "pair",
+              "type": "address"
+            }
+          ]
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "feeTo",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ]
+        },
+        {
+          "inputs": [],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "feeToSetter",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "tokenA",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "tokenB",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function",
+          "name": "getPair",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "pair",
+              "type": "address"
+            }
+          ]
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "setFeeTo"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "setFeeToSetter"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":forge-std/=lib/forge-std/src/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/interfaces/Interfaces.sol": "IUniswapV2Factory"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "src/interfaces/Interfaces.sol": {
+        "keccak256": "0x741b318f522ba8451f4a2e40afcf59e995484318fabe7c57adeba3124bbd7e04",
+        "urls": [
+          "bzz-raw://dba0a37a10519080f892d5c8b87a0ec026ef73492195a901e49f74766b5915f7",
+          "dweb:/ipfs/QmduauRea8YdqJaMeHiYH2tRtbydoqgVirSaTzbXMoEjYX"
+        ],
+        "license": "GPL-3.0-or-later"
+      }
+    },
+    "version": 1
+  },
   "ast": {
     "absolutePath": "src/interfaces/Interfaces.sol",
     "id": 27207,
@@ -229,6 +439,7 @@
         "id": 26293,
         "nodeType": "PragmaDirective",
         "src": "46:23:19",
+        "nodes": [],
         "literals": [
           "solidity",
           "^",
@@ -245,6 +456,7 @@
             "id": 26298,
             "nodeType": "FunctionDefinition",
             "src": "95:52:19",
+            "nodes": [],
             "functionSelector": "61a73ada",
             "implemented": false,
             "kind": "function",
@@ -300,6 +512,7 @@
             "id": 26303,
             "nodeType": "FunctionDefinition",
             "src": "153:57:19",
+            "nodes": [],
             "functionSelector": "ea4cd96b",
             "implemented": false,
             "kind": "function",
@@ -375,6 +588,7 @@
             "id": 26309,
             "nodeType": "FunctionDefinition",
             "src": "254:55:19",
+            "nodes": [],
             "functionSelector": "50d25bcd",
             "implemented": false,
             "kind": "function",
@@ -430,6 +644,7 @@
             "id": 26314,
             "nodeType": "FunctionDefinition",
             "src": "315:59:19",
+            "nodes": [],
             "functionSelector": "8205bf6a",
             "implemented": false,
             "kind": "function",
@@ -485,6 +700,7 @@
             "id": 26319,
             "nodeType": "FunctionDefinition",
             "src": "380:55:19",
+            "nodes": [],
             "functionSelector": "668a0f02",
             "implemented": false,
             "kind": "function",
@@ -540,6 +756,7 @@
             "id": 26326,
             "nodeType": "FunctionDefinition",
             "src": "441:67:19",
+            "nodes": [],
             "functionSelector": "b5ab58dc",
             "implemented": false,
             "kind": "function",
@@ -623,6 +840,7 @@
             "id": 26333,
             "nodeType": "FunctionDefinition",
             "src": "514:71:19",
+            "nodes": [],
             "functionSelector": "b633620c",
             "implemented": false,
             "kind": "function",
@@ -706,6 +924,7 @@
             "id": 26341,
             "nodeType": "EventDefinition",
             "src": "593:88:19",
+            "nodes": [],
             "anonymous": false,
             "eventSelector": "0559884fd3a460db3073b7fc896cc77986f16e378210ded43186175bf646fc5f",
             "name": "AnswerUpdated",
@@ -806,6 +1025,7 @@
             "id": 26349,
             "nodeType": "EventDefinition",
             "src": "687:86:19",
+            "nodes": [],
             "anonymous": false,
             "eventSelector": "0109fc6f55cf40689f02fbaad7af7fe7bbac8a3d2186600afc7d3e10cac60271",
             "name": "NewRound",
@@ -927,6 +1147,7 @@
             "id": 26356,
             "nodeType": "FunctionDefinition",
             "src": "878:55:19",
+            "nodes": [],
             "documentation": {
               "id": 26351,
               "nodeType": "StructuredDocumentation",
@@ -988,6 +1209,7 @@
             "id": 26364,
             "nodeType": "FunctionDefinition",
             "src": "1021:68:19",
+            "nodes": [],
             "documentation": {
               "id": 26357,
               "nodeType": "StructuredDocumentation",
@@ -1078,6 +1300,7 @@
             "id": 26374,
             "nodeType": "FunctionDefinition",
             "src": "1318:77:19",
+            "nodes": [],
             "documentation": {
               "id": 26365,
               "nodeType": "StructuredDocumentation",
@@ -1195,6 +1418,7 @@
             "id": 26384,
             "nodeType": "FunctionDefinition",
             "src": "1679:83:19",
+            "nodes": [],
             "documentation": {
               "id": 26375,
               "nodeType": "StructuredDocumentation",
@@ -1313,6 +1537,7 @@
             "id": 26394,
             "nodeType": "FunctionDefinition",
             "src": "2431:74:19",
+            "nodes": [],
             "documentation": {
               "id": 26385,
               "nodeType": "StructuredDocumentation",
@@ -1430,6 +1655,7 @@
             "id": 26406,
             "nodeType": "FunctionDefinition",
             "src": "2823:97:19",
+            "nodes": [],
             "documentation": {
               "id": 26395,
               "nodeType": "StructuredDocumentation",
@@ -1575,6 +1801,7 @@
             "id": 26415,
             "nodeType": "EventDefinition",
             "src": "3097:72:19",
+            "nodes": [],
             "anonymous": false,
             "documentation": {
               "id": 26407,
@@ -1683,6 +1910,7 @@
             "id": 26424,
             "nodeType": "EventDefinition",
             "src": "3334:78:19",
+            "nodes": [],
             "anonymous": false,
             "documentation": {
               "id": 26416,
@@ -1811,6 +2039,7 @@
             "id": 26432,
             "nodeType": "FunctionDefinition",
             "src": "3469:58:19",
+            "nodes": [],
             "functionSelector": "313ce567",
             "implemented": false,
             "kind": "function",
@@ -1869,6 +2098,9 @@
             "baseName": {
               "id": 26426,
               "name": "IERC20",
+              "nameLocations": [
+                "3455:6:19"
+              ],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 26425,
               "src": "3455:6:19"
@@ -1900,6 +2132,7 @@
             "id": 26436,
             "nodeType": "FunctionDefinition",
             "src": "3557:36:19",
+            "nodes": [],
             "functionSelector": "d0e30db0",
             "implemented": false,
             "kind": "function",
@@ -1927,6 +2160,7 @@
             "id": 26441,
             "nodeType": "FunctionDefinition",
             "src": "3599:33:19",
+            "nodes": [],
             "functionSelector": "2e1a7d4d",
             "implemented": false,
             "kind": "function",
@@ -1982,6 +2216,7 @@
             "id": 26448,
             "nodeType": "FunctionDefinition",
             "src": "3638:68:19",
+            "nodes": [],
             "functionSelector": "70a08231",
             "implemented": false,
             "kind": "function",
@@ -2066,6 +2301,7 @@
             "id": 26457,
             "nodeType": "FunctionDefinition",
             "src": "3712:66:19",
+            "nodes": [],
             "functionSelector": "a9059cbb",
             "implemented": false,
             "kind": "function",
@@ -2197,6 +2433,7 @@
             "id": 26468,
             "nodeType": "EventDefinition",
             "src": "3820:86:19",
+            "nodes": [],
             "anonymous": false,
             "eventSelector": "0d3648bd0f6ba80134a33ba9275ac585d9d315f0ad8355cddefde31afa28d0e9",
             "name": "PairCreated",
@@ -2328,6 +2565,7 @@
             "id": 26473,
             "nodeType": "FunctionDefinition",
             "src": "3914:49:19",
+            "nodes": [],
             "functionSelector": "017e7e58",
             "implemented": false,
             "kind": "function",
@@ -2384,6 +2622,7 @@
             "id": 26478,
             "nodeType": "FunctionDefinition",
             "src": "3969:55:19",
+            "nodes": [],
             "functionSelector": "094b7415",
             "implemented": false,
             "kind": "function",
@@ -2440,6 +2679,7 @@
             "id": 26487,
             "nodeType": "FunctionDefinition",
             "src": "4032:86:19",
+            "nodes": [],
             "functionSelector": "e6a43905",
             "implemented": false,
             "kind": "function",
@@ -2553,6 +2793,7 @@
             "id": 26494,
             "nodeType": "FunctionDefinition",
             "src": "4124:61:19",
+            "nodes": [],
             "functionSelector": "1e3dd18b",
             "implemented": false,
             "kind": "function",
@@ -2637,6 +2878,7 @@
             "id": 26499,
             "nodeType": "FunctionDefinition",
             "src": "4191:55:19",
+            "nodes": [],
             "functionSelector": "574f2ba3",
             "implemented": false,
             "kind": "function",
@@ -2692,6 +2934,7 @@
             "id": 26508,
             "nodeType": "FunctionDefinition",
             "src": "4254:84:19",
+            "nodes": [],
             "functionSelector": "c9c65396",
             "implemented": false,
             "kind": "function",
@@ -2805,6 +3048,7 @@
             "id": 26513,
             "nodeType": "FunctionDefinition",
             "src": "4346:36:19",
+            "nodes": [],
             "functionSelector": "f46901ed",
             "implemented": false,
             "kind": "function",
@@ -2861,6 +3105,7 @@
             "id": 26518,
             "nodeType": "FunctionDefinition",
             "src": "4388:42:19",
+            "nodes": [],
             "functionSelector": "a2e74af6",
             "implemented": false,
             "kind": "function",
@@ -2937,6 +3182,7 @@
             "id": 26527,
             "nodeType": "EventDefinition",
             "src": "4469:75:19",
+            "nodes": [],
             "anonymous": false,
             "eventSelector": "8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925",
             "name": "Approval",
@@ -3039,6 +3285,7 @@
             "id": 26535,
             "nodeType": "EventDefinition",
             "src": "4550:69:19",
+            "nodes": [],
             "anonymous": false,
             "eventSelector": "ddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
             "name": "Transfer",
@@ -3141,6 +3388,7 @@
             "id": 26540,
             "nodeType": "FunctionDefinition",
             "src": "4627:54:19",
+            "nodes": [],
             "functionSelector": "06fdde03",
             "implemented": false,
             "kind": "function",
@@ -3196,6 +3444,7 @@
             "id": 26545,
             "nodeType": "FunctionDefinition",
             "src": "4687:56:19",
+            "nodes": [],
             "functionSelector": "95d89b41",
             "implemented": false,
             "kind": "function",
@@ -3251,6 +3500,7 @@
             "id": 26550,
             "nodeType": "FunctionDefinition",
             "src": "4749:50:19",
+            "nodes": [],
             "functionSelector": "313ce567",
             "implemented": false,
             "kind": "function",
@@ -3306,6 +3556,7 @@
             "id": 26555,
             "nodeType": "FunctionDefinition",
             "src": "4805:52:19",
+            "nodes": [],
             "functionSelector": "18160ddd",
             "implemented": false,
             "kind": "function",
@@ -3361,6 +3612,7 @@
             "id": 26562,
             "nodeType": "FunctionDefinition",
             "src": "4863:63:19",
+            "nodes": [],
             "functionSelector": "70a08231",
             "implemented": false,
             "kind": "function",
@@ -3445,6 +3697,7 @@
             "id": 26571,
             "nodeType": "FunctionDefinition",
             "src": "4932:80:19",
+            "nodes": [],
             "functionSelector": "dd62ed3e",
             "implemented": false,
             "kind": "function",
@@ -3557,6 +3810,7 @@
             "id": 26580,
             "nodeType": "FunctionDefinition",
             "src": "5020:70:19",
+            "nodes": [],
             "functionSelector": "095ea7b3",
             "implemented": false,
             "kind": "function",
@@ -3668,6 +3922,7 @@
             "id": 26589,
             "nodeType": "FunctionDefinition",
             "src": "5096:66:19",
+            "nodes": [],
             "functionSelector": "a9059cbb",
             "implemented": false,
             "kind": "function",
@@ -3779,6 +4034,7 @@
             "id": 26600,
             "nodeType": "FunctionDefinition",
             "src": "5168:84:19",
+            "nodes": [],
             "functionSelector": "23b872dd",
             "implemented": false,
             "kind": "function",
@@ -3918,6 +4174,7 @@
             "id": 26605,
             "nodeType": "FunctionDefinition",
             "src": "5260:60:19",
+            "nodes": [],
             "functionSelector": "3644e515",
             "implemented": false,
             "kind": "function",
@@ -3973,6 +4230,7 @@
             "id": 26610,
             "nodeType": "FunctionDefinition",
             "src": "5326:59:19",
+            "nodes": [],
             "functionSelector": "30adf81f",
             "implemented": false,
             "kind": "function",
@@ -4028,6 +4286,7 @@
             "id": 26617,
             "nodeType": "FunctionDefinition",
             "src": "5391:60:19",
+            "nodes": [],
             "functionSelector": "7ecebe00",
             "implemented": false,
             "kind": "function",
@@ -4112,6 +4371,7 @@
             "id": 26634,
             "nodeType": "FunctionDefinition",
             "src": "5459:115:19",
+            "nodes": [],
             "functionSelector": "d505accf",
             "implemented": false,
             "kind": "function",
@@ -4331,6 +4591,7 @@
             "id": 26642,
             "nodeType": "EventDefinition",
             "src": "5582:63:19",
+            "nodes": [],
             "anonymous": false,
             "eventSelector": "4c209b5fc8ad50758f13e2e1088ba56a560dff690a1c6fef26394f4c03821c4f",
             "name": "Mint",
@@ -4432,6 +4693,7 @@
             "id": 26652,
             "nodeType": "EventDefinition",
             "src": "5651:83:19",
+            "nodes": [],
             "anonymous": false,
             "eventSelector": "dccd412f0b1252819cb1fd330b93224ca42612892bb3f4f789976e6d81936496",
             "name": "Burn",
@@ -4562,6 +4824,7 @@
             "id": 26666,
             "nodeType": "EventDefinition",
             "src": "5740:182:19",
+            "nodes": [],
             "anonymous": false,
             "eventSelector": "d78ad95fa46c994b6551d0da85fc275fe613ce37657fb8d5e3d130840159d822",
             "name": "Swap",
@@ -4748,6 +5011,7 @@
             "id": 26672,
             "nodeType": "EventDefinition",
             "src": "5928:47:19",
+            "nodes": [],
             "anonymous": false,
             "eventSelector": "1c411e9a96e071241c2f21f7726b17ae89e3cab4c78be50e062b03a9fffbbad1",
             "name": "Sync",
@@ -4820,6 +5084,7 @@
             "id": 26677,
             "nodeType": "FunctionDefinition",
             "src": "5983:58:19",
+            "nodes": [],
             "functionSelector": "ba9a7a56",
             "implemented": false,
             "kind": "function",
@@ -4875,6 +5140,7 @@
             "id": 26682,
             "nodeType": "FunctionDefinition",
             "src": "6047:51:19",
+            "nodes": [],
             "functionSelector": "c45a0155",
             "implemented": false,
             "kind": "function",
@@ -4931,6 +5197,7 @@
             "id": 26687,
             "nodeType": "FunctionDefinition",
             "src": "6104:50:19",
+            "nodes": [],
             "functionSelector": "0dfe1681",
             "implemented": false,
             "kind": "function",
@@ -4987,6 +5254,7 @@
             "id": 26692,
             "nodeType": "FunctionDefinition",
             "src": "6160:50:19",
+            "nodes": [],
             "functionSelector": "d21220a7",
             "implemented": false,
             "kind": "function",
@@ -5043,6 +5311,7 @@
             "id": 26701,
             "nodeType": "FunctionDefinition",
             "src": "6216:109:19",
+            "nodes": [],
             "functionSelector": "0902f1ac",
             "implemented": false,
             "kind": "function",
@@ -5152,6 +5421,7 @@
             "id": 26706,
             "nodeType": "FunctionDefinition",
             "src": "6331:61:19",
+            "nodes": [],
             "functionSelector": "5909c0d5",
             "implemented": false,
             "kind": "function",
@@ -5207,6 +5477,7 @@
             "id": 26711,
             "nodeType": "FunctionDefinition",
             "src": "6398:61:19",
+            "nodes": [],
             "functionSelector": "5a3d5493",
             "implemented": false,
             "kind": "function",
@@ -5262,6 +5533,7 @@
             "id": 26716,
             "nodeType": "FunctionDefinition",
             "src": "6465:46:19",
+            "nodes": [],
             "functionSelector": "7464fc3d",
             "implemented": false,
             "kind": "function",
@@ -5317,6 +5589,7 @@
             "id": 26723,
             "nodeType": "FunctionDefinition",
             "src": "6519:60:19",
+            "nodes": [],
             "functionSelector": "6a627842",
             "implemented": false,
             "kind": "function",
@@ -5401,6 +5674,7 @@
             "id": 26732,
             "nodeType": "FunctionDefinition",
             "src": "6585:72:19",
+            "nodes": [],
             "functionSelector": "89afcb44",
             "implemented": false,
             "kind": "function",
@@ -5512,6 +5786,7 @@
             "id": 26743,
             "nodeType": "FunctionDefinition",
             "src": "6663:90:19",
+            "nodes": [],
             "functionSelector": "022c0d9f",
             "implemented": false,
             "kind": "function",
@@ -5649,6 +5924,7 @@
             "id": 26748,
             "nodeType": "FunctionDefinition",
             "src": "6759:35:19",
+            "nodes": [],
             "functionSelector": "bc25cf77",
             "implemented": false,
             "kind": "function",
@@ -5705,6 +5981,7 @@
             "id": 26751,
             "nodeType": "FunctionDefinition",
             "src": "6800:25:19",
+            "nodes": [],
             "functionSelector": "fff6cae9",
             "implemented": false,
             "kind": "function",
@@ -5732,6 +6009,7 @@
             "id": 26758,
             "nodeType": "FunctionDefinition",
             "src": "6833:47:19",
+            "nodes": [],
             "functionSelector": "485cc955",
             "implemented": false,
             "kind": "function",
@@ -5836,6 +6114,7 @@
             "id": 26764,
             "nodeType": "FunctionDefinition",
             "src": "6923:51:19",
+            "nodes": [],
             "functionSelector": "c45a0155",
             "implemented": false,
             "kind": "function",
@@ -5892,6 +6171,7 @@
             "id": 26769,
             "nodeType": "FunctionDefinition",
             "src": "6980:48:19",
+            "nodes": [],
             "functionSelector": "ad5c4648",
             "implemented": false,
             "kind": "function",
@@ -5948,6 +6228,7 @@
             "id": 26794,
             "nodeType": "FunctionDefinition",
             "src": "7036:298:19",
+            "nodes": [],
             "functionSelector": "e8e33700",
             "implemented": false,
             "kind": "function",
@@ -6277,6 +6558,7 @@
             "id": 26815,
             "nodeType": "FunctionDefinition",
             "src": "7340:269:19",
+            "nodes": [],
             "functionSelector": "f305d719",
             "implemented": false,
             "kind": "function",
@@ -6551,6 +6833,7 @@
             "id": 26836,
             "nodeType": "FunctionDefinition",
             "src": "7615:250:19",
+            "nodes": [],
             "functionSelector": "baa2abde",
             "implemented": false,
             "kind": "function",
@@ -6826,6 +7109,7 @@
             "id": 26855,
             "nodeType": "FunctionDefinition",
             "src": "7871:239:19",
+            "nodes": [],
             "functionSelector": "02751cec",
             "implemented": false,
             "kind": "function",
@@ -7073,6 +7357,7 @@
             "id": 26884,
             "nodeType": "FunctionDefinition",
             "src": "8116:317:19",
+            "nodes": [],
             "functionSelector": "2195995c",
             "implemented": false,
             "kind": "function",
@@ -7456,6 +7741,7 @@
             "id": 26911,
             "nodeType": "FunctionDefinition",
             "src": "8439:306:19",
+            "nodes": [],
             "functionSelector": "ded9382a",
             "implemented": false,
             "kind": "function",
@@ -7811,6 +8097,7 @@
             "id": 26928,
             "nodeType": "FunctionDefinition",
             "src": "8751:213:19",
+            "nodes": [],
             "functionSelector": "38ed1739",
             "implemented": false,
             "kind": "function",
@@ -8022,6 +8309,7 @@
             "id": 26945,
             "nodeType": "FunctionDefinition",
             "src": "8970:213:19",
+            "nodes": [],
             "functionSelector": "8803dbee",
             "implemented": false,
             "kind": "function",
@@ -8233,6 +8521,7 @@
             "id": 26960,
             "nodeType": "FunctionDefinition",
             "src": "9189:178:19",
+            "nodes": [],
             "functionSelector": "7ff36ab5",
             "implemented": false,
             "kind": "function",
@@ -8417,6 +8706,7 @@
             "id": 26977,
             "nodeType": "FunctionDefinition",
             "src": "9373:176:19",
+            "nodes": [],
             "functionSelector": "4a25d94a",
             "implemented": false,
             "kind": "function",
@@ -8628,6 +8918,7 @@
             "id": 26994,
             "nodeType": "FunctionDefinition",
             "src": "9555:176:19",
+            "nodes": [],
             "functionSelector": "18cbafe5",
             "implemented": false,
             "kind": "function",
@@ -8839,6 +9130,7 @@
             "id": 27009,
             "nodeType": "FunctionDefinition",
             "src": "9737:175:19",
+            "nodes": [],
             "functionSelector": "fb3bdb41",
             "implemented": false,
             "kind": "function",
@@ -9023,6 +9315,7 @@
             "id": 27020,
             "nodeType": "FunctionDefinition",
             "src": "9920:96:19",
+            "nodes": [],
             "functionSelector": "ad615dec",
             "implemented": false,
             "kind": "function",
@@ -9160,6 +9453,7 @@
             "id": 27031,
             "nodeType": "FunctionDefinition",
             "src": "10022:109:19",
+            "nodes": [],
             "functionSelector": "054d50d4",
             "implemented": false,
             "kind": "function",
@@ -9297,6 +9591,7 @@
             "id": 27042,
             "nodeType": "FunctionDefinition",
             "src": "10137:108:19",
+            "nodes": [],
             "functionSelector": "85f8c259",
             "implemented": false,
             "kind": "function",
@@ -9434,6 +9729,7 @@
             "id": 27053,
             "nodeType": "FunctionDefinition",
             "src": "10251:109:19",
+            "nodes": [],
             "functionSelector": "d06ca61f",
             "implemented": false,
             "kind": "function",
@@ -9563,6 +9859,7 @@
             "id": 27064,
             "nodeType": "FunctionDefinition",
             "src": "10366:109:19",
+            "nodes": [],
             "functionSelector": "1f00ca74",
             "implemented": false,
             "kind": "function",
@@ -9712,6 +10009,7 @@
             "id": 27084,
             "nodeType": "FunctionDefinition",
             "src": "10540:250:19",
+            "nodes": [],
             "functionSelector": "af2979eb",
             "implemented": false,
             "kind": "function",
@@ -9932,6 +10230,7 @@
             "id": 27109,
             "nodeType": "FunctionDefinition",
             "src": "10796:317:19",
+            "nodes": [],
             "functionSelector": "5b0d5984",
             "implemented": false,
             "kind": "function",
@@ -10260,6 +10559,7 @@
             "id": 27123,
             "nodeType": "FunctionDefinition",
             "src": "11121:210:19",
+            "nodes": [],
             "functionSelector": "5c11d795",
             "implemented": false,
             "kind": "function",
@@ -10434,6 +10734,7 @@
             "id": 27135,
             "nodeType": "FunctionDefinition",
             "src": "11337:191:19",
+            "nodes": [],
             "functionSelector": "b6f9de95",
             "implemented": false,
             "kind": "function",
@@ -10581,6 +10882,7 @@
             "id": 27149,
             "nodeType": "FunctionDefinition",
             "src": "11534:207:19",
+            "nodes": [],
             "functionSelector": "791ac947",
             "implemented": false,
             "kind": "function",
@@ -10758,6 +11060,9 @@
             "baseName": {
               "id": 27066,
               "name": "IUniswapV2Router01",
+              "nameLocations": [
+                "10514:18:19"
+              ],
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 27065,
               "src": "10514:18:19"
@@ -10789,6 +11094,7 @@
             "id": 27158,
             "nodeType": "FunctionDefinition",
             "src": "12246:67:19",
+            "nodes": [],
             "documentation": {
               "id": 27151,
               "nodeType": "StructuredDocumentation",
@@ -10879,6 +11185,7 @@
             "id": 27162,
             "nodeType": "FunctionDefinition",
             "src": "12642:48:19",
+            "nodes": [],
             "documentation": {
               "id": 27159,
               "nodeType": "StructuredDocumentation",
@@ -10912,6 +11219,7 @@
             "id": 27166,
             "nodeType": "FunctionDefinition",
             "src": "12993:37:19",
+            "nodes": [],
             "documentation": {
               "id": 27163,
               "nodeType": "StructuredDocumentation",
@@ -10945,6 +11253,7 @@
             "id": 27173,
             "nodeType": "EventDefinition",
             "src": "13244:83:19",
+            "nodes": [],
             "anonymous": false,
             "documentation": {
               "id": 27167,
@@ -11024,6 +11333,7 @@
             "id": 27180,
             "nodeType": "EventDefinition",
             "src": "13541:78:19",
+            "nodes": [],
             "anonymous": false,
             "documentation": {
               "id": 27174,
@@ -11123,6 +11433,7 @@
             "id": 27189,
             "nodeType": "FunctionDefinition",
             "src": "14043:79:19",
+            "nodes": [],
             "documentation": {
               "id": 27182,
               "nodeType": "StructuredDocumentation",
@@ -11213,6 +11524,7 @@
             "id": 27197,
             "nodeType": "FunctionDefinition",
             "src": "14335:76:19",
+            "nodes": [],
             "documentation": {
               "id": 27190,
               "nodeType": "StructuredDocumentation",
@@ -11303,6 +11615,7 @@
             "id": 27205,
             "nodeType": "FunctionDefinition",
             "src": "14742:79:19",
+            "nodes": [],
             "documentation": {
               "id": 27198,
               "nodeType": "StructuredDocumentation",

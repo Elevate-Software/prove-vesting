@@ -11,6 +11,54 @@
     "linkReferences": {}
   },
   "methodIdentifiers": {},
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/extensions/Context.sol\":\"Context\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":forge-std/=lib/forge-std/src/\"]},\"sources\":{\"src/extensions/Context.sol\":{\"keccak256\":\"0x8795d48b0db75e627ea6d57f1eb24e269519a1db8ce2e7d3a4441dd516a9b016\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://39249193e7e48805d84c55471a695d8f88a3358f0b3274b94ce4e83278a53a12\",\"dweb:/ipfs/QmQcrb4WuzRmY3oeX8ush6EqhtjqmfFxpawXk2ceHoFMiV\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.17+commit.8df45f5f"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":ds-test/=lib/forge-std/lib/ds-test/src/",
+        ":forge-std/=lib/forge-std/src/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/extensions/Context.sol": "Context"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "src/extensions/Context.sol": {
+        "keccak256": "0x8795d48b0db75e627ea6d57f1eb24e269519a1db8ce2e7d3a4441dd516a9b016",
+        "urls": [
+          "bzz-raw://39249193e7e48805d84c55471a695d8f88a3358f0b3274b94ce4e83278a53a12",
+          "dweb:/ipfs/QmQcrb4WuzRmY3oeX8ush6EqhtjqmfFxpawXk2ceHoFMiV"
+        ],
+        "license": "MIT"
+      }
+    },
+    "version": 1
+  },
   "ast": {
     "absolutePath": "src/extensions/Context.sol",
     "id": 26144,
@@ -26,6 +74,7 @@
         "id": 26119,
         "nodeType": "PragmaDirective",
         "src": "33:23:17",
+        "nodes": [],
         "literals": [
           "solidity",
           "^",
@@ -42,10 +91,12 @@
             "id": 26131,
             "nodeType": "FunctionDefinition",
             "src": "603:115:17",
+            "nodes": [],
             "body": {
               "id": 26130,
               "nodeType": "Block",
               "src": "673:45:17",
+              "nodes": [],
               "statements": [
                 {
                   "expression": {
@@ -68,6 +119,7 @@
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
+                        "memberLocation": "703:6:17",
                         "memberName": "sender",
                         "nodeType": "MemberAccess",
                         "src": "699:10:17",
@@ -110,6 +162,7 @@
                     "isPure": false,
                     "kind": "typeConversion",
                     "lValueRequested": false,
+                    "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
                     "src": "691:19:17",
@@ -181,10 +234,12 @@
             "id": 26142,
             "nodeType": "FunctionDefinition",
             "src": "726:233:17",
+            "nodes": [],
             "body": {
               "id": 26141,
               "nodeType": "Block",
               "src": "791:168:17",
+              "nodes": [],
               "statements": [
                 {
                   "expression": {
@@ -222,6 +277,7 @@
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
+                    "memberLocation": "947:4:17",
                     "memberName": "data",
                     "nodeType": "MemberAccess",
                     "src": "943:8:17",
