@@ -1,7 +1,10 @@
 //SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 
-import { IERC20, ITreasury, IVesting, IUniswapV2Factory, IUniswapV2Router02 } from "./interfaces/InterfacesAggregated.sol";
+import { IERC20 } from "./interfaces/IERC20.sol";
+import { ITreasury, IVesting } from "./interfaces/InterfacesAggregated.sol";
+import { IUniswapV2Factory } from "./interfaces/IUniswapV2Factory.sol";
+import { IUniswapV2Router02 } from "./interfaces/IUniswapV2Router.sol";
 import { ERC20 } from "./interfaces/ERC20.sol";
 import "./extensions/Ownable.sol";
 

@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 import "./extensions/Ownable.sol";
-import {IERC20} from "./interfaces/Interfaces.sol";
+import {IERC20} from "./interfaces/IERC20.sol";
 
 /// @dev Vesting Schedule: 12% day 1 then 8% every month thereafter.
 
@@ -20,6 +20,8 @@ contract Vesting is Ownable {
 
     uint256 public vestingStartUnix;  /// @notice block timestamp of when vesting has begun
     bool public vestingEnabled;       /// @notice vesting enabled when true.
+
+    uint256 public totalTokensToVest;
 
     Investor[] investorLibrary;   /// @notice array of investors.
 
@@ -122,6 +124,8 @@ contract Vesting is Ownable {
 
         investors[_account] = true;
         investorLibrary.push(Investor(_account, _tokensToVest, 0));
+
+        totalTokensToVest += _tokensToVest;
         
         emit InvestorAdded(_account);
     }
@@ -174,6 +178,12 @@ contract Vesting is Ownable {
     // ----
     // View
     // ----
+
+    /// @notice This function returns the amount of total tokens this contract will vest
+    /// @return uint256 total amount of tokens to vest.
+    function getAllVestedTokens() external view returns (uint256) {
+        return totalTokensToVest;
+    }
 
     /// @notice This function returns the amount of tokens to claim for a specified investor.
     /// @param _account address of investor.

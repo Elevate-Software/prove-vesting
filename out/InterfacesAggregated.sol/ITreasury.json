@@ -1,0 +1,345 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amt",
+          "type": "uint256"
+        }
+      ],
+      "name": "updateTaxesAccrued",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "updateTaxesAccrued(uint256)": "755965b8"
+  },
+  "ast": {
+    "absolutePath": "src/interfaces/InterfacesAggregated.sol",
+    "id": 29874,
+    "exportedSymbols": {
+      "ITreasury": [
+        29867
+      ],
+      "IUniswapV2Factory": [
+        29861
+      ],
+      "IVesting": [
+        29873
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "46:332:26",
+    "nodes": [
+      {
+        "id": 29851,
+        "nodeType": "PragmaDirective",
+        "src": "46:23:26",
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".6"
+        ]
+      },
+      {
+        "id": 29861,
+        "nodeType": "ContractDefinition",
+        "src": "73:122:26",
+        "nodes": [
+          {
+            "id": 29860,
+            "nodeType": "FunctionDefinition",
+            "src": "108:84:26",
+            "functionSelector": "c9c65396",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "createPair",
+            "nameLocation": "117:10:26",
+            "parameters": {
+              "id": 29856,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 29853,
+                  "mutability": "mutable",
+                  "name": "tokenA",
+                  "nameLocation": "136:6:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 29860,
+                  "src": "128:14:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 29852,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "128:7:26",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 29855,
+                  "mutability": "mutable",
+                  "name": "tokenB",
+                  "nameLocation": "152:6:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 29860,
+                  "src": "144:14:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 29854,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "144:7:26",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "127:32:26"
+            },
+            "returnParameters": {
+              "id": 29859,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 29858,
+                  "mutability": "mutable",
+                  "name": "pair",
+                  "nameLocation": "186:4:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 29860,
+                  "src": "178:12:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 29857,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "178:7:26",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "177:14:26"
+            },
+            "scope": 29861,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IUniswapV2Factory",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          29861
+        ],
+        "name": "IUniswapV2Factory",
+        "nameLocation": "83:17:26",
+        "scope": 29874,
+        "usedErrors": []
+      },
+      {
+        "id": 29867,
+        "nodeType": "ContractDefinition",
+        "src": "199:77:26",
+        "nodes": [
+          {
+            "id": 29866,
+            "nodeType": "FunctionDefinition",
+            "src": "226:47:26",
+            "functionSelector": "755965b8",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateTaxesAccrued",
+            "nameLocation": "235:18:26",
+            "parameters": {
+              "id": 29864,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 29863,
+                  "mutability": "mutable",
+                  "name": "amt",
+                  "nameLocation": "259:3:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 29866,
+                  "src": "254:8:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 29862,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "254:4:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "253:10:26"
+            },
+            "returnParameters": {
+              "id": 29865,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "272:0:26"
+            },
+            "scope": 29867,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ITreasury",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          29867
+        ],
+        "name": "ITreasury",
+        "nameLocation": "209:9:26",
+        "scope": 29874,
+        "usedErrors": []
+      },
+      {
+        "id": 29873,
+        "nodeType": "ContractDefinition",
+        "src": "280:98:26",
+        "nodes": [
+          {
+            "id": 29872,
+            "nodeType": "FunctionDefinition",
+            "src": "306:69:26",
+            "functionSelector": "08ac7624",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAllVestedTokens",
+            "nameLocation": "315:18:26",
+            "parameters": {
+              "id": 29868,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "333:2:26"
+            },
+            "returnParameters": {
+              "id": 29871,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 29870,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "367:6:26",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 29872,
+                  "src": "359:14:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 29869,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "359:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "358:16:26"
+            },
+            "scope": 29873,
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IVesting",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          29873
+        ],
+        "name": "IVesting",
+        "nameLocation": "290:8:26",
+        "scope": 29874,
+        "usedErrors": []
+      }
+    ],
+    "license": "GPL-3.0-or-later"
+  },
+  "id": 26
+}

@@ -2,7 +2,7 @@
 pragma solidity ^0.8.6;
 pragma experimental ABIEncoderV2;
 
-import { IERC20 } from "../interfaces/Interfaces.sol";
+import { IERC20 } from "../interfaces/IERC20.sol";
 
 contract Actor {
 
