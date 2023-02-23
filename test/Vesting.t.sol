@@ -3,7 +3,11 @@ pragma solidity ^0.8.13;
 
 import "../lib/forge-std/src/Test.sol";
 import "./Utility.sol";
-import { Vesting } from "../src/Vesting.sol";
+
+// Import sol files.
+import { TaxToken } from "../src/TaxToken.sol";
+import { Treasury } from "../src/Treasury.sol";
+import { Vesting }  from "../src/Vesting.sol";
 
 contract VestingTest is Utility, Test {
     Vesting vesting;
@@ -12,18 +16,36 @@ contract VestingTest is Utility, Test {
         createActors();
         setUpTokens();
 
-        // deploy Vesting contract
+        // (1) Deploy the TaxToken.
+        proveToken = new TaxToken(
+            1_000_000_000,     // Initial liquidity (220M)
+            'Prove Zero',      // Name of token
+            'PROVE',           // Symbol of token
+            18,                // Precision of decimals
+            220_000_000,       // Max wallet (220M)
+            220_000_000        // Max transaction (220M)
+        );
+
+        // (2) Deploy the Treasury.
+        treasury = new Treasury(
+            address(this),
+            address(proveToken),
+            USDC
+        );
+
+        // (3) Update the TaxToken "treasury" state variable.
+        proveToken.setTreasury(address(treasury));
+
+        // Finally, deploy Vesting contract
         vesting = new Vesting(
-            //use compound for now just so we can actually deal the tokens out in test cases without having an EVM revert
-            //was "222" before
-            address(0xc00e94Cb662C3520282E6f5717214004A7f26888),  
+            address(proveToken),  
             address(dev)
         );
     }
 
     // Initial State Test.
     function test_vesting_init_state() public {
-        assertEq(vesting.proveToken(),       address(0xc00e94Cb662C3520282E6f5717214004A7f26888));
+        assertEq(vesting.proveToken(),       address(proveToken));
         assertEq(vesting.vestingStartUnix(), 0);
         assertEq(vesting.vestingEnabled(),   false);
     }
@@ -298,7 +320,7 @@ contract VestingTest is Utility, Test {
     /// @dev Verifies claim() restrictions
     function test_vesting_claim_restrictions() public {
         // *First fill up the contract with PROVE tokens 
-        deal(0xc00e94Cb662C3520282E6f5717214004A7f26888, address(vesting), 5_000_000 ether);
+        deal(proveToken, address(vesting), 5_000_000 ether);
 
         // Jon is trying to claim
         vm.startPrank(address(jon));
@@ -337,7 +359,7 @@ contract VestingTest is Utility, Test {
         uint _amount = 1_000_000 ether;
 
         // *First fill up the contract with PROVE tokens 
-        deal(0xc00e94Cb662C3520282E6f5717214004A7f26888, address(vesting), _amount);
+        deal(vesting.proveToken, address(vesting), _amount);
 
         //Jon is trying to claim
         vm.startPrank(address(jon));
@@ -399,7 +421,7 @@ contract VestingTest is Utility, Test {
     /// @dev Verifies claim() edge cases
     function test_vesting_claim_edge_cases() public {
         // *First fill up the contract with PROVE tokens 
-        deal(0xc00e94Cb662C3520282E6f5717214004A7f26888, address(vesting), 5_000_000 ether);
+        deal(vesting.proveToken, address(vesting), 5_000_000 ether);
 
         //Enable vesting
         assert(dev.try_enableVesting(address(vesting)));
@@ -452,7 +474,7 @@ contract VestingTest is Utility, Test {
         _amount = bound(_amount, 100_000 ether, 100_000_000 ether);
 
         // *First fill up the contract with PROVE tokens 
-        deal(0xc00e94Cb662C3520282E6f5717214004A7f26888, address(vesting), _amount);
+        deal(vesting.proveToken, address(vesting), _amount);
 
         //Jon is trying to claim
         vm.startPrank(address(jon));
@@ -516,7 +538,7 @@ contract VestingTest is Utility, Test {
         _amount = bound(_amount, 100_000 ether, 100_000_000 ether);
 
         // *First fill up the contract with PROVE tokens 
-        deal(0xc00e94Cb662C3520282E6f5717214004A7f26888, address(vesting), _amount * 3);
+        deal(vesting.proveToken, address(vesting), _amount * 3);
 
         //Enable vesting
         assert(dev.try_enableVesting(address(vesting)));
