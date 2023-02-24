@@ -720,9 +720,102 @@
         }
       }
     },
+    "src/TaxToken.sol": {
+      "lastModificationDate": 1677232597652,
+      "contentHash": "d61a72f0a379ddf2bde556aab1faffef",
+      "sourceName": "src/TaxToken.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "src/extensions/Context.sol",
+        "src/extensions/Ownable.sol",
+        "src/interfaces/ERC20.sol",
+        "src/interfaces/IERC20.sol",
+        "src/interfaces/IUniswapV2Factory.sol",
+        "src/interfaces/IUniswapV2Router.sol",
+        "src/interfaces/InterfacesAggregated.sol"
+      ],
+      "versionRequirement": "^0.8.6",
+      "artifacts": {
+        "TaxToken": {
+          "0.8.17+commit.8df45f5f.Linux.gcc": "TaxToken.sol/TaxToken.json"
+        }
+      }
+    },
+    "src/Treasury.sol": {
+      "lastModificationDate": 1677232597653,
+      "contentHash": "f32dfc694e686022fc67762d0176a6db",
+      "sourceName": "src/Treasury.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "src/extensions/Context.sol",
+        "src/extensions/Ownable.sol",
+        "src/interfaces/IERC20.sol",
+        "src/interfaces/IUniswapV2Router.sol"
+      ],
+      "versionRequirement": "^0.8.6",
+      "artifacts": {
+        "Treasury": {
+          "0.8.17+commit.8df45f5f.Linux.gcc": "Treasury.sol/Treasury.json"
+        }
+      }
+    },
     "src/Vesting.sol": {
-      "lastModificationDate": 1675983986777,
-      "contentHash": "d721f44d5890e1e004a04df7a2132f77",
+      "lastModificationDate": 1677232597654,
+      "contentHash": "be5a0dde7e87c1d413822ccf2ea857d1",
       "sourceName": "src/Vesting.sol",
       "solcConfig": {
         "settings": {
@@ -755,7 +848,7 @@
       "imports": [
         "src/extensions/Context.sol",
         "src/extensions/Ownable.sol",
-        "src/interfaces/Interfaces.sol"
+        "src/interfaces/IERC20.sol"
       ],
       "versionRequirement": "^0.8.13",
       "artifacts": {
@@ -846,10 +939,56 @@
         }
       }
     },
-    "src/interfaces/Interfaces.sol": {
-      "lastModificationDate": 1673910167557,
-      "contentHash": "41a7ba920bd7f684d7d78ca2f4a4478e",
-      "sourceName": "src/interfaces/Interfaces.sol",
+    "src/interfaces/ERC20.sol": {
+      "lastModificationDate": 1677232597657,
+      "contentHash": "93546a19bfd21d265d795fda9435974e",
+      "sourceName": "src/interfaces/ERC20.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "src/extensions/Context.sol",
+        "src/interfaces/IERC20.sol"
+      ],
+      "versionRequirement": "^0.8.6",
+      "artifacts": {
+        "ERC20": {
+          "0.8.17+commit.8df45f5f.Linux.gcc": "ERC20.sol/ERC20.json"
+        },
+        "SafeMath": {
+          "0.8.17+commit.8df45f5f.Linux.gcc": "ERC20.sol/SafeMath.json"
+        }
+      }
+    },
+    "src/interfaces/IERC20.sol": {
+      "lastModificationDate": 1677232597657,
+      "contentHash": "0d5f268625dfab773a031f4fae7f8752",
+      "sourceName": "src/interfaces/IERC20.sol",
       "solcConfig": {
         "settings": {
           "optimizer": {
@@ -881,44 +1020,226 @@
       "imports": [],
       "versionRequirement": "^0.8.6",
       "artifacts": {
-        "AggregatorInterface": {
-          "0.8.17+commit.8df45f5f.Linux.gcc": "Interfaces.sol/AggregatorInterface.json"
-        },
-        "IDAO": {
-          "0.8.17+commit.8df45f5f.Linux.gcc": "Interfaces.sol/IDAO.json"
-        },
-        "IDividendPayingToken": {
-          "0.8.17+commit.8df45f5f.Linux.gcc": "Interfaces.sol/IDividendPayingToken.json"
-        },
-        "IDividendPayingTokenOptional": {
-          "0.8.17+commit.8df45f5f.Linux.gcc": "Interfaces.sol/IDividendPayingTokenOptional.json"
-        },
         "IERC20": {
-          "0.8.17+commit.8df45f5f.Linux.gcc": "Interfaces.sol/IERC20.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "IERC20.sol/IERC20.json"
         },
         "IERC20Extended": {
-          "0.8.17+commit.8df45f5f.Linux.gcc": "Interfaces.sol/IERC20Extended.json"
-        },
+          "0.8.17+commit.8df45f5f.Linux.gcc": "IERC20.sol/IERC20Extended.json"
+        }
+      }
+    },
+    "src/interfaces/IUniswapV2Factory.sol": {
+      "lastModificationDate": 1677232597659,
+      "contentHash": "3b94ae5d4a6707147a96923b345197d1",
+      "sourceName": "src/interfaces/IUniswapV2Factory.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.6",
+      "artifacts": {
         "IUniswapV2Factory": {
-          "0.8.17+commit.8df45f5f.Linux.gcc": "Interfaces.sol/IUniswapV2Factory.json"
-        },
+          "0.8.17+commit.8df45f5f.Linux.gcc": "IUniswapV2Factory.sol/IUniswapV2Factory.json"
+        }
+      }
+    },
+    "src/interfaces/IUniswapV2Pair.sol": {
+      "lastModificationDate": 1677232597659,
+      "contentHash": "8631347a590a7b494a262fafd1276f8c",
+      "sourceName": "src/interfaces/IUniswapV2Pair.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.6",
+      "artifacts": {
         "IUniswapV2Pair": {
-          "0.8.17+commit.8df45f5f.Linux.gcc": "Interfaces.sol/IUniswapV2Pair.json"
-        },
+          "0.8.17+commit.8df45f5f.Linux.gcc": "IUniswapV2Pair.sol/IUniswapV2Pair.json"
+        }
+      }
+    },
+    "src/interfaces/IUniswapV2Router.sol": {
+      "lastModificationDate": 1677232597661,
+      "contentHash": "e1176fa15ddf5d62d79d6cbf1025e7d1",
+      "sourceName": "src/interfaces/IUniswapV2Router.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.6",
+      "artifacts": {
         "IUniswapV2Router01": {
-          "0.8.17+commit.8df45f5f.Linux.gcc": "Interfaces.sol/IUniswapV2Router01.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "IUniswapV2Router.sol/IUniswapV2Router01.json"
         },
         "IUniswapV2Router02": {
-          "0.8.17+commit.8df45f5f.Linux.gcc": "Interfaces.sol/IUniswapV2Router02.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "IUniswapV2Router.sol/IUniswapV2Router02.json"
+        }
+      }
+    },
+    "src/interfaces/InterfacesAggregated.sol": {
+      "lastModificationDate": 1677232597662,
+      "contentHash": "61e39d3fe3f0e71682551f36c043c17d",
+      "sourceName": "src/interfaces/InterfacesAggregated.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.6",
+      "artifacts": {
+        "ITreasury": {
+          "0.8.17+commit.8df45f5f.Linux.gcc": "InterfacesAggregated.sol/ITreasury.json"
         },
-        "IWETH": {
-          "0.8.17+commit.8df45f5f.Linux.gcc": "Interfaces.sol/IWETH.json"
+        "IUniswapV2Factory": {
+          "0.8.17+commit.8df45f5f.Linux.gcc": "InterfacesAggregated.sol/IUniswapV2Factory.json"
+        },
+        "IVesting": {
+          "0.8.17+commit.8df45f5f.Linux.gcc": "InterfacesAggregated.sol/IVesting.json"
+        }
+      }
+    },
+    "src/libraries/SafeMath.sol": {
+      "lastModificationDate": 1677232597662,
+      "contentHash": "e6a68bd2e7aefab1a422d6629913316b",
+      "sourceName": "src/libraries/SafeMath.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "^0.8.0",
+      "artifacts": {
+        "SafeMath": {
+          "0.8.17+commit.8df45f5f.Linux.gcc": "SafeMath.sol/SafeMath.json"
         }
       }
     },
     "src/users/Actor.sol": {
-      "lastModificationDate": 1675357114771,
-      "contentHash": "8410b927a661b953ba526c946f32f543",
+      "lastModificationDate": 1677232597662,
+      "contentHash": "c65d3387dc77540b00756d51672cc313",
       "sourceName": "src/users/Actor.sol",
       "solcConfig": {
         "settings": {
@@ -949,7 +1270,7 @@
         }
       },
       "imports": [
-        "src/interfaces/Interfaces.sol"
+        "src/interfaces/IERC20.sol"
       ],
       "versionRequirement": "^0.8.6",
       "artifacts": {
@@ -958,9 +1279,76 @@
         }
       }
     },
+    "test/MainDeployment.t.sol": {
+      "lastModificationDate": 1677234136938,
+      "contentHash": "f9d79c5fb23c842c97173fc9e8c7ee7d",
+      "sourceName": "test/MainDeployment.t.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "lib/forge-std/lib/ds-test/src/test.sol",
+        "lib/forge-std/src/Base.sol",
+        "lib/forge-std/src/StdAssertions.sol",
+        "lib/forge-std/src/StdChains.sol",
+        "lib/forge-std/src/StdCheats.sol",
+        "lib/forge-std/src/StdError.sol",
+        "lib/forge-std/src/StdJson.sol",
+        "lib/forge-std/src/StdMath.sol",
+        "lib/forge-std/src/StdStorage.sol",
+        "lib/forge-std/src/StdUtils.sol",
+        "lib/forge-std/src/Test.sol",
+        "lib/forge-std/src/Vm.sol",
+        "lib/forge-std/src/console.sol",
+        "lib/forge-std/src/console2.sol",
+        "src/TaxToken.sol",
+        "src/Treasury.sol",
+        "src/Vesting.sol",
+        "src/extensions/Context.sol",
+        "src/extensions/Ownable.sol",
+        "src/interfaces/ERC20.sol",
+        "src/interfaces/IERC20.sol",
+        "src/interfaces/IUniswapV2Factory.sol",
+        "src/interfaces/IUniswapV2Router.sol",
+        "src/interfaces/InterfacesAggregated.sol",
+        "src/users/Actor.sol",
+        "test/Utility.sol"
+      ],
+      "versionRequirement": "^0.8.13",
+      "artifacts": {
+        "MainDeploymentTest": {
+          "0.8.17+commit.8df45f5f.Linux.gcc": "MainDeployment.t.sol/MainDeploymentTest.json"
+        }
+      }
+    },
     "test/Utility.sol": {
-      "lastModificationDate": 1673910167565,
-      "contentHash": "fda4e3be9af9e1364615c579212a238f",
+      "lastModificationDate": 1677232597667,
+      "contentHash": "76ab54711b0825e617d0ce7de5639cd8",
       "sourceName": "test/Utility.sol",
       "solcConfig": {
         "settings": {
@@ -1005,7 +1393,7 @@
         "lib/forge-std/src/Vm.sol",
         "lib/forge-std/src/console.sol",
         "lib/forge-std/src/console2.sol",
-        "src/interfaces/Interfaces.sol",
+        "src/interfaces/IERC20.sol",
         "src/users/Actor.sol"
       ],
       "versionRequirement": "^0.8.6",
@@ -1022,8 +1410,8 @@
       }
     },
     "test/Vesting.t.sol": {
-      "lastModificationDate": 1676328845482,
-      "contentHash": "9a809d2575627c6315c59f1ede1939ba",
+      "lastModificationDate": 1677232597667,
+      "contentHash": "03b084edd55931c61794c7e5f2b31e8e",
       "sourceName": "test/Vesting.t.sol",
       "solcConfig": {
         "settings": {
@@ -1071,7 +1459,7 @@
         "src/Vesting.sol",
         "src/extensions/Context.sol",
         "src/extensions/Ownable.sol",
-        "src/interfaces/Interfaces.sol",
+        "src/interfaces/IERC20.sol",
         "src/users/Actor.sol",
         "test/Utility.sol"
       ],

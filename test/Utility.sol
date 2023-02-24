@@ -35,6 +35,7 @@ contract Utility is DSTest {
     address constant DAI   = 0x6B175474E89094C44Da98b954EedeAC495271d0F;
     address constant WETH  = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
     address constant WBTC  = 0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599;
+    address constant FRAX  = 0x853d955aCEf822Db058eb8505911ED77F175b99e;
 
     IERC20 constant usdc = IERC20(USDC);
     IERC20 constant dai  = IERC20(DAI);

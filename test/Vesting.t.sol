@@ -3,7 +3,9 @@ pragma solidity ^0.8.13;
 
 import "../lib/forge-std/src/Test.sol";
 import "./Utility.sol";
-import { Vesting } from "../src/Vesting.sol";
+
+// Import sol files.
+import { Vesting }  from "../src/Vesting.sol";
 
 contract VestingTest is Utility, Test {
     Vesting vesting;
@@ -14,16 +16,14 @@ contract VestingTest is Utility, Test {
 
         // deploy Vesting contract
         vesting = new Vesting(
-            //use compound for now just so we can actually deal the tokens out in test cases without having an EVM revert
-            //was "222" before
-            address(0xc00e94Cb662C3520282E6f5717214004A7f26888),  
+            FRAX,  
             address(dev)
         );
     }
 
     // Initial State Test.
     function test_vesting_init_state() public {
-        assertEq(vesting.proveToken(),       address(0xc00e94Cb662C3520282E6f5717214004A7f26888));
+        assertEq(vesting.proveToken(),       FRAX);
         assertEq(vesting.vestingStartUnix(), 0);
         assertEq(vesting.vestingEnabled(),   false);
     }
@@ -137,6 +137,7 @@ contract VestingTest is Utility, Test {
         assertEq(vesting.investors(address(joe)),      false);
         Vesting.Investor[] memory tempArr = vesting.getInvestorLibrary();
         assertEq(tempArr.length,          0);
+        assertEq(vesting.getAllVestedTokens(), 0);
 
         // Call addInvestor().
         assert(dev.try_addInvestor(address(vesting), address(joe), 10 ether));
@@ -148,6 +149,8 @@ contract VestingTest is Utility, Test {
         assertEq(tempArr[0].account,       address(joe));
         assertEq(tempArr[0].tokensToVest,  10 ether);
         assertEq(tempArr[0].tokensClaimed, 0);
+
+        assertEq(vesting.getAllVestedTokens(), 10 ether);
     }
 
     // ~ removeInvestor() tests ~
@@ -298,7 +301,7 @@ contract VestingTest is Utility, Test {
     /// @dev Verifies claim() restrictions
     function test_vesting_claim_restrictions() public {
         // *First fill up the contract with PROVE tokens 
-        deal(0xc00e94Cb662C3520282E6f5717214004A7f26888, address(vesting), 5_000_000 ether);
+        deal(vesting.proveToken(), address(vesting), 5_000_000 ether);
 
         // Jon is trying to claim
         vm.startPrank(address(jon));
@@ -337,7 +340,7 @@ contract VestingTest is Utility, Test {
         uint _amount = 1_000_000 ether;
 
         // *First fill up the contract with PROVE tokens 
-        deal(0xc00e94Cb662C3520282E6f5717214004A7f26888, address(vesting), _amount);
+        deal(vesting.proveToken(), address(vesting), _amount);
 
         //Jon is trying to claim
         vm.startPrank(address(jon));
@@ -399,7 +402,7 @@ contract VestingTest is Utility, Test {
     /// @dev Verifies claim() edge cases
     function test_vesting_claim_edge_cases() public {
         // *First fill up the contract with PROVE tokens 
-        deal(0xc00e94Cb662C3520282E6f5717214004A7f26888, address(vesting), 5_000_000 ether);
+        deal(vesting.proveToken(), address(vesting), 5_000_000 ether);
 
         //Enable vesting
         assert(dev.try_enableVesting(address(vesting)));
@@ -452,7 +455,7 @@ contract VestingTest is Utility, Test {
         _amount = bound(_amount, 100_000 ether, 100_000_000 ether);
 
         // *First fill up the contract with PROVE tokens 
-        deal(0xc00e94Cb662C3520282E6f5717214004A7f26888, address(vesting), _amount);
+        deal(vesting.proveToken(), address(vesting), _amount);
 
         //Jon is trying to claim
         vm.startPrank(address(jon));
@@ -516,7 +519,7 @@ contract VestingTest is Utility, Test {
         _amount = bound(_amount, 100_000 ether, 100_000_000 ether);
 
         // *First fill up the contract with PROVE tokens 
-        deal(0xc00e94Cb662C3520282E6f5717214004A7f26888, address(vesting), _amount * 3);
+        deal(vesting.proveToken(), address(vesting), _amount * 3);
 
         //Enable vesting
         assert(dev.try_enableVesting(address(vesting)));
