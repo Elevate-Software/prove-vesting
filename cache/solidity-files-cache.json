@@ -12,7 +12,7 @@
   },
   "files": {
     "lib/forge-std/lib/ds-test/src/test.sol": {
-      "lastModificationDate": 1672766956382,
+      "lastModificationDate": 1673910529029,
       "contentHash": "962996f0e05d5218857a538a62d7c47e",
       "sourceName": "lib/forge-std/lib/ds-test/src/test.sol",
       "solcConfig": {
@@ -22,7 +22,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -33,7 +34,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -45,12 +47,12 @@
       "versionRequirement": ">=0.5.0",
       "artifacts": {
         "DSTest": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "test.sol/DSTest.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "test.sol/DSTest.json"
         }
       }
     },
     "lib/forge-std/src/Base.sol": {
-      "lastModificationDate": 1672766954867,
+      "lastModificationDate": 1673910519703,
       "contentHash": "1870c8c1d5470db8c3e956c839db8364",
       "sourceName": "lib/forge-std/src/Base.sol",
       "solcConfig": {
@@ -60,7 +62,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -71,7 +74,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -86,18 +90,18 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "CommonBase": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "Base.sol/CommonBase.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "Base.sol/CommonBase.json"
         },
         "ScriptBase": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "Base.sol/ScriptBase.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "Base.sol/ScriptBase.json"
         },
         "TestBase": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "Base.sol/TestBase.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "Base.sol/TestBase.json"
         }
       }
     },
     "lib/forge-std/src/Script.sol": {
-      "lastModificationDate": 1672766954877,
+      "lastModificationDate": 1673910519723,
       "contentHash": "83c39354c1e43190bce4dc43860dc786",
       "sourceName": "lib/forge-std/src/Script.sol",
       "solcConfig": {
@@ -107,7 +111,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -118,7 +123,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -141,12 +147,12 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "Script": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "Script.sol/Script.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "Script.sol/Script.json"
         }
       }
     },
     "lib/forge-std/src/StdAssertions.sol": {
-      "lastModificationDate": 1672766954881,
+      "lastModificationDate": 1673910519732,
       "contentHash": "93fa608efd4df1e671b043437fddd457",
       "sourceName": "lib/forge-std/src/StdAssertions.sol",
       "solcConfig": {
@@ -156,7 +162,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -167,7 +174,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -182,12 +190,12 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "StdAssertions": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "StdAssertions.sol/StdAssertions.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "StdAssertions.sol/StdAssertions.json"
         }
       }
     },
     "lib/forge-std/src/StdChains.sol": {
-      "lastModificationDate": 1672766954887,
+      "lastModificationDate": 1673910519743,
       "contentHash": "80138bc1765b08a6db58237c26985fd9",
       "sourceName": "lib/forge-std/src/StdChains.sol",
       "solcConfig": {
@@ -197,7 +205,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -208,7 +217,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -222,12 +232,12 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "StdChains": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "StdChains.sol/StdChains.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "StdChains.sol/StdChains.json"
         }
       }
     },
     "lib/forge-std/src/StdCheats.sol": {
-      "lastModificationDate": 1672766954893,
+      "lastModificationDate": 1673910519752,
       "contentHash": "979104d2f33c34c269636f70cfc84a02",
       "sourceName": "lib/forge-std/src/StdCheats.sol",
       "solcConfig": {
@@ -237,7 +247,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -248,7 +259,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -263,15 +275,15 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "StdCheats": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "StdCheats.sol/StdCheats.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "StdCheats.sol/StdCheats.json"
         },
         "StdCheatsSafe": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "StdCheats.sol/StdCheatsSafe.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "StdCheats.sol/StdCheatsSafe.json"
         }
       }
     },
     "lib/forge-std/src/StdError.sol": {
-      "lastModificationDate": 1672766954899,
+      "lastModificationDate": 1673910519761,
       "contentHash": "64c896e1276a291776e5ea5aecb3870a",
       "sourceName": "lib/forge-std/src/StdError.sol",
       "solcConfig": {
@@ -281,7 +293,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -292,7 +305,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -304,12 +318,12 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "stdError": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "StdError.sol/stdError.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "StdError.sol/stdError.json"
         }
       }
     },
     "lib/forge-std/src/StdJson.sol": {
-      "lastModificationDate": 1672766954900,
+      "lastModificationDate": 1673910519770,
       "contentHash": "016de2d7ee55960094cc97ec792025bb",
       "sourceName": "lib/forge-std/src/StdJson.sol",
       "solcConfig": {
@@ -319,7 +333,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -330,7 +345,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -344,12 +360,12 @@
       "versionRequirement": ">=0.6.0, <0.9.0",
       "artifacts": {
         "stdJson": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "StdJson.sol/stdJson.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "StdJson.sol/stdJson.json"
         }
       }
     },
     "lib/forge-std/src/StdMath.sol": {
-      "lastModificationDate": 1672766954907,
+      "lastModificationDate": 1673910519779,
       "contentHash": "9da8f453eba6bb98f3d75bc6822bfb29",
       "sourceName": "lib/forge-std/src/StdMath.sol",
       "solcConfig": {
@@ -359,7 +375,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -370,7 +387,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -382,12 +400,12 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "stdMath": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "StdMath.sol/stdMath.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "StdMath.sol/stdMath.json"
         }
       }
     },
     "lib/forge-std/src/StdStorage.sol": {
-      "lastModificationDate": 1672766954908,
+      "lastModificationDate": 1673910519788,
       "contentHash": "1b6b8a6cbaaaf5a72860a56f0cde4e33",
       "sourceName": "lib/forge-std/src/StdStorage.sol",
       "solcConfig": {
@@ -397,7 +415,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -408,7 +427,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -422,15 +442,15 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "stdStorage": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "StdStorage.sol/stdStorage.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "StdStorage.sol/stdStorage.json"
         },
         "stdStorageSafe": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "StdStorage.sol/stdStorageSafe.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "StdStorage.sol/stdStorageSafe.json"
         }
       }
     },
     "lib/forge-std/src/StdUtils.sol": {
-      "lastModificationDate": 1672766954914,
+      "lastModificationDate": 1673910519798,
       "contentHash": "ec75addbeee075c61fa5aff2faee0465",
       "sourceName": "lib/forge-std/src/StdUtils.sol",
       "solcConfig": {
@@ -440,7 +460,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -451,7 +472,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -465,12 +487,12 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "StdUtils": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "StdUtils.sol/StdUtils.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "StdUtils.sol/StdUtils.json"
         }
       }
     },
     "lib/forge-std/src/Test.sol": {
-      "lastModificationDate": 1672766954920,
+      "lastModificationDate": 1673910519808,
       "contentHash": "9ca73393dbc2f8cde2aa628f8d05c5d5",
       "sourceName": "lib/forge-std/src/Test.sol",
       "solcConfig": {
@@ -480,7 +502,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -491,7 +514,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -517,12 +541,12 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "Test": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "Test.sol/Test.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "Test.sol/Test.json"
         }
       }
     },
     "lib/forge-std/src/Vm.sol": {
-      "lastModificationDate": 1672766954924,
+      "lastModificationDate": 1673910519817,
       "contentHash": "9e6cb90f4c6f4f00605959af21cbc67b",
       "sourceName": "lib/forge-std/src/Vm.sol",
       "solcConfig": {
@@ -532,7 +556,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -543,7 +568,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -555,15 +581,15 @@
       "versionRequirement": ">=0.6.2, <0.9.0",
       "artifacts": {
         "Vm": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "Vm.sol/Vm.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "Vm.sol/Vm.json"
         },
         "VmSafe": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "Vm.sol/VmSafe.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "Vm.sol/VmSafe.json"
         }
       }
     },
     "lib/forge-std/src/console.sol": {
-      "lastModificationDate": 1672766954931,
+      "lastModificationDate": 1673910519826,
       "contentHash": "100b8a33b917da1147740d7ab8b0ded3",
       "sourceName": "lib/forge-std/src/console.sol",
       "solcConfig": {
@@ -573,7 +599,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -584,7 +611,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -596,12 +624,12 @@
       "versionRequirement": ">=0.4.22, <0.9.0",
       "artifacts": {
         "console": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "console.sol/console.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "console.sol/console.json"
         }
       }
     },
     "lib/forge-std/src/console2.sol": {
-      "lastModificationDate": 1672766954940,
+      "lastModificationDate": 1673910519836,
       "contentHash": "2096b4e5f252c5df9909cccbe3d2da2e",
       "sourceName": "lib/forge-std/src/console2.sol",
       "solcConfig": {
@@ -611,7 +639,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -622,7 +651,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -634,13 +664,13 @@
       "versionRequirement": ">=0.4.22, <0.9.0",
       "artifacts": {
         "console2": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "console2.sol/console2.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "console2.sol/console2.json"
         }
       }
     },
     "script/Contract.s.sol": {
-      "lastModificationDate": 1672766952697,
-      "contentHash": "3642d05d9c479368231825c40aaa276a",
+      "lastModificationDate": 1673910167545,
+      "contentHash": "f4eb8c62468835e958df7ab2af105bb9",
       "sourceName": "script/Contract.s.sol",
       "solcConfig": {
         "settings": {
@@ -649,7 +679,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -660,7 +691,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -684,12 +716,12 @@
       "versionRequirement": "^0.8.13",
       "artifacts": {
         "ContractScript": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "Contract.s.sol/ContractScript.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "Contract.s.sol/ContractScript.json"
         }
       }
     },
     "src/TaxToken.sol": {
-      "lastModificationDate": 1677191445474,
+      "lastModificationDate": 1677232597652,
       "contentHash": "d61a72f0a379ddf2bde556aab1faffef",
       "sourceName": "src/TaxToken.sol",
       "solcConfig": {
@@ -699,7 +731,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -710,7 +743,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -730,12 +764,12 @@
       "versionRequirement": "^0.8.6",
       "artifacts": {
         "TaxToken": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "TaxToken.sol/TaxToken.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "TaxToken.sol/TaxToken.json"
         }
       }
     },
     "src/Treasury.sol": {
-      "lastModificationDate": 1677191472944,
+      "lastModificationDate": 1677232597653,
       "contentHash": "f32dfc694e686022fc67762d0176a6db",
       "sourceName": "src/Treasury.sol",
       "solcConfig": {
@@ -745,7 +779,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -756,7 +791,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -773,12 +809,12 @@
       "versionRequirement": "^0.8.6",
       "artifacts": {
         "Treasury": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "Treasury.sol/Treasury.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "Treasury.sol/Treasury.json"
         }
       }
     },
     "src/Vesting.sol": {
-      "lastModificationDate": 1677192703826,
+      "lastModificationDate": 1677232597654,
       "contentHash": "be5a0dde7e87c1d413822ccf2ea857d1",
       "sourceName": "src/Vesting.sol",
       "solcConfig": {
@@ -788,7 +824,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -799,7 +836,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -815,12 +853,12 @@
       "versionRequirement": "^0.8.13",
       "artifacts": {
         "Vesting": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "Vesting.sol/Vesting.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "Vesting.sol/Vesting.json"
         }
       }
     },
     "src/extensions/Context.sol": {
-      "lastModificationDate": 1666048727268,
+      "lastModificationDate": 1673910167551,
       "contentHash": "58ff29a788235f168f45e8f9cd54a0f3",
       "sourceName": "src/extensions/Context.sol",
       "solcConfig": {
@@ -830,7 +868,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -841,7 +880,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -853,12 +893,12 @@
       "versionRequirement": "^0.8.6",
       "artifacts": {
         "Context": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "Context.sol/Context.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "Context.sol/Context.json"
         }
       }
     },
     "src/extensions/Ownable.sol": {
-      "lastModificationDate": 1666048748879,
+      "lastModificationDate": 1673910167554,
       "contentHash": "4dba375b7d8f9a298d15d22922b9cc85",
       "sourceName": "src/extensions/Ownable.sol",
       "solcConfig": {
@@ -868,7 +908,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -879,7 +920,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -893,12 +935,12 @@
       "versionRequirement": "^0.8.4",
       "artifacts": {
         "Ownable": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "Ownable.sol/Ownable.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "Ownable.sol/Ownable.json"
         }
       }
     },
     "src/interfaces/ERC20.sol": {
-      "lastModificationDate": 1677191384008,
+      "lastModificationDate": 1677232597657,
       "contentHash": "93546a19bfd21d265d795fda9435974e",
       "sourceName": "src/interfaces/ERC20.sol",
       "solcConfig": {
@@ -908,7 +950,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -919,7 +962,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -934,15 +978,15 @@
       "versionRequirement": "^0.8.6",
       "artifacts": {
         "ERC20": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "ERC20.sol/ERC20.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "ERC20.sol/ERC20.json"
         },
         "SafeMath": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "ERC20.sol/SafeMath.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "ERC20.sol/SafeMath.json"
         }
       }
     },
     "src/interfaces/IERC20.sol": {
-      "lastModificationDate": 1677191294674,
+      "lastModificationDate": 1677232597657,
       "contentHash": "0d5f268625dfab773a031f4fae7f8752",
       "sourceName": "src/interfaces/IERC20.sol",
       "solcConfig": {
@@ -952,7 +996,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -963,7 +1008,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -975,15 +1021,15 @@
       "versionRequirement": "^0.8.6",
       "artifacts": {
         "IERC20": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "IERC20.sol/IERC20.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "IERC20.sol/IERC20.json"
         },
         "IERC20Extended": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "IERC20.sol/IERC20Extended.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "IERC20.sol/IERC20Extended.json"
         }
       }
     },
     "src/interfaces/IUniswapV2Factory.sol": {
-      "lastModificationDate": 1677191294675,
+      "lastModificationDate": 1677232597659,
       "contentHash": "3b94ae5d4a6707147a96923b345197d1",
       "sourceName": "src/interfaces/IUniswapV2Factory.sol",
       "solcConfig": {
@@ -993,7 +1039,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -1004,7 +1051,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -1016,12 +1064,12 @@
       "versionRequirement": "^0.8.6",
       "artifacts": {
         "IUniswapV2Factory": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "IUniswapV2Factory.sol/IUniswapV2Factory.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "IUniswapV2Factory.sol/IUniswapV2Factory.json"
         }
       }
     },
     "src/interfaces/IUniswapV2Pair.sol": {
-      "lastModificationDate": 1677191294674,
+      "lastModificationDate": 1677232597659,
       "contentHash": "8631347a590a7b494a262fafd1276f8c",
       "sourceName": "src/interfaces/IUniswapV2Pair.sol",
       "solcConfig": {
@@ -1031,7 +1079,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -1042,7 +1091,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -1054,12 +1104,12 @@
       "versionRequirement": "^0.8.6",
       "artifacts": {
         "IUniswapV2Pair": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "IUniswapV2Pair.sol/IUniswapV2Pair.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "IUniswapV2Pair.sol/IUniswapV2Pair.json"
         }
       }
     },
     "src/interfaces/IUniswapV2Router.sol": {
-      "lastModificationDate": 1677191294674,
+      "lastModificationDate": 1677232597661,
       "contentHash": "e1176fa15ddf5d62d79d6cbf1025e7d1",
       "sourceName": "src/interfaces/IUniswapV2Router.sol",
       "solcConfig": {
@@ -1069,7 +1119,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -1080,7 +1131,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -1092,15 +1144,15 @@
       "versionRequirement": "^0.8.6",
       "artifacts": {
         "IUniswapV2Router01": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "IUniswapV2Router.sol/IUniswapV2Router01.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "IUniswapV2Router.sol/IUniswapV2Router01.json"
         },
         "IUniswapV2Router02": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "IUniswapV2Router.sol/IUniswapV2Router02.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "IUniswapV2Router.sol/IUniswapV2Router02.json"
         }
       }
     },
     "src/interfaces/InterfacesAggregated.sol": {
-      "lastModificationDate": 1677191294672,
+      "lastModificationDate": 1677232597662,
       "contentHash": "61e39d3fe3f0e71682551f36c043c17d",
       "sourceName": "src/interfaces/InterfacesAggregated.sol",
       "solcConfig": {
@@ -1110,7 +1162,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -1121,7 +1174,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -1133,18 +1187,18 @@
       "versionRequirement": "^0.8.6",
       "artifacts": {
         "ITreasury": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "InterfacesAggregated.sol/ITreasury.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "InterfacesAggregated.sol/ITreasury.json"
         },
         "IUniswapV2Factory": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "InterfacesAggregated.sol/IUniswapV2Factory.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "InterfacesAggregated.sol/IUniswapV2Factory.json"
         },
         "IVesting": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "InterfacesAggregated.sol/IVesting.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "InterfacesAggregated.sol/IVesting.json"
         }
       }
     },
     "src/libraries/SafeMath.sol": {
-      "lastModificationDate": 1677191294677,
+      "lastModificationDate": 1677232597662,
       "contentHash": "e6a68bd2e7aefab1a422d6629913316b",
       "sourceName": "src/libraries/SafeMath.sol",
       "solcConfig": {
@@ -1154,7 +1208,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -1165,7 +1220,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -1177,12 +1233,12 @@
       "versionRequirement": "^0.8.0",
       "artifacts": {
         "SafeMath": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "SafeMath.sol/SafeMath.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "SafeMath.sol/SafeMath.json"
         }
       }
     },
     "src/users/Actor.sol": {
-      "lastModificationDate": 1677191338396,
+      "lastModificationDate": 1677232597662,
       "contentHash": "c65d3387dc77540b00756d51672cc313",
       "sourceName": "src/users/Actor.sol",
       "solcConfig": {
@@ -1192,7 +1248,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -1203,7 +1260,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -1217,13 +1275,13 @@
       "versionRequirement": "^0.8.6",
       "artifacts": {
         "Actor": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "Actor.sol/Actor.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "Actor.sol/Actor.json"
         }
       }
     },
     "test/MainDeployment.t.sol": {
-      "lastModificationDate": 1677193158679,
-      "contentHash": "25357744f92dba89d8efd75ab0e379b9",
+      "lastModificationDate": 1677234136938,
+      "contentHash": "f9d79c5fb23c842c97173fc9e8c7ee7d",
       "sourceName": "test/MainDeployment.t.sol",
       "solcConfig": {
         "settings": {
@@ -1232,7 +1290,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -1243,7 +1302,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -1282,12 +1342,12 @@
       "versionRequirement": "^0.8.13",
       "artifacts": {
         "MainDeploymentTest": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "MainDeployment.t.sol/MainDeploymentTest.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "MainDeployment.t.sol/MainDeploymentTest.json"
         }
       }
     },
     "test/Utility.sol": {
-      "lastModificationDate": 1677191930205,
+      "lastModificationDate": 1677232597667,
       "contentHash": "76ab54711b0825e617d0ce7de5639cd8",
       "sourceName": "test/Utility.sol",
       "solcConfig": {
@@ -1297,7 +1357,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -1308,7 +1369,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -1337,18 +1399,18 @@
       "versionRequirement": "^0.8.6",
       "artifacts": {
         "Hevm": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "Utility.sol/Hevm.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "Utility.sol/Hevm.json"
         },
         "User": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "Utility.sol/User.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "Utility.sol/User.json"
         },
         "Utility": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "Utility.sol/Utility.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "Utility.sol/Utility.json"
         }
       }
     },
     "test/Vesting.t.sol": {
-      "lastModificationDate": 1677192779270,
+      "lastModificationDate": 1677232597667,
       "contentHash": "03b084edd55931c61794c7e5f2b31e8e",
       "sourceName": "test/Vesting.t.sol",
       "solcConfig": {
@@ -1358,7 +1420,8 @@
             "runs": 200
           },
           "metadata": {
-            "bytecodeHash": "ipfs"
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
           },
           "outputSelection": {
             "*": {
@@ -1369,7 +1432,8 @@
                 "abi",
                 "evm.bytecode",
                 "evm.deployedBytecode",
-                "evm.methodIdentifiers"
+                "evm.methodIdentifiers",
+                "metadata"
               ]
             }
           },
@@ -1402,7 +1466,7 @@
       "versionRequirement": "^0.8.13",
       "artifacts": {
         "VestingTest": {
-          "0.8.15+commit.e14f2714.Linux.gcc": "Vesting.t.sol/VestingTest.json"
+          "0.8.17+commit.8df45f5f.Linux.gcc": "Vesting.t.sol/VestingTest.json"
         }
       }
     }
